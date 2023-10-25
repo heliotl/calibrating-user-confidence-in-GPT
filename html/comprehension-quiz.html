@@ -1,0 +1,310 @@
+<!--
+comprehension-quiz.html
+
+    Author      :   Helio Tejeda
+    University  :   University of California, Irvine
+    Lab         :   Modeling and Decision-Making Lab (MADLAB)
+
+Comprehension Quiz HTML file.
+
+This file contains comprehension quiz information for the experiment.
+
+Remember that this is a template. You will need to populate this
+file as you need for your given experiment. What is given here is
+simply a container that has space for you to input the necessary
+code for you experiment trials.
+
+Be sure to update the comprehension-quiz.js file with all of the task
+metadata necessary.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="css/comprehension-quiz.css">
+    </head>
+    <body>
+        <div class="col-12">
+            <div class="row" id="comprehension-quiz-task-container">
+                <div class="col-1">
+
+                </div>
+                <div class="col-10 trialbox justify-content-center" id="comprehension-quiz-experiment" style="display:visible;">
+                    <!--
+                    **********************
+                    *   Trial Information
+                    **********************
+                    -->
+                    <div class="row">
+                        <div class="col-12 text-center" id="comprehension-quiz-trialMetadata">
+                            <h2>
+                                Trial
+                                <!-- 
+                                    Update the value X using JS (update trial by trial)
+                                    To update this value, use:
+
+                                    $('#trialCounter').text(
+                                        CurrentTrialNumber
+                                    );
+                                -->
+                                <span id="comprehension-quiz-trialCounter">
+                                    X
+                                </span>
+                                of
+                                <!-- 
+                                    Modify the value of Y using JS (only needs to be done once)
+                                    To update this value, use:
+
+                                    $('#trialCounter-total').text(
+                                        TOTAL_TRIALS
+                                    );
+                                -->
+                                <span id="comprehension-quiz-trialCounter-total">
+                                    Y
+                                </span>
+                            </h2>
+                        </div>
+                    </div>
+                    <!-- Actual trial question/information goes here -->
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <!-- 
+                                Modify this value using JS (updated trial by trial)
+                                To update this value, use:
+
+                                $('#trial-task').html(
+                                    "WHATEVER YOU WANT GOES HERE"
+                                );
+                            -->
+                            <h4 class="trial-task trial-question trial-information" id="comprehension-quiz-task">
+                                Trial question/information goes here
+                            </h4>
+                        </div>
+                    </div>
+                    <!--
+                    ******************
+                    *   Trial Content
+                    ******************
+                    -->
+                    <div class="row">
+                        <div class="col-12" id="comprehensionQuizContent">
+                            <!--
+                            ************************************
+                            *   Update the content in here to
+                            *   your satisfaction for the
+                            *   experiment you are conducting
+                            ************************************
+
+                            NOTE:
+                                You will need to add divs, spans, buttons, etc
+                                in here to create the task activity you want!
+
+                                This is left completely empty for you to fill
+                                in as you wish :)
+                            -->
+                            <div class="row">
+                                <div class="col-12">
+                                    TRIAL CONTENT HERE
+                                </div>
+                            </div>
+                            <!--
+                            **************************
+                            *   Submit/Proceed Button
+                            **************************
+
+                            NOTE:
+                                A proceed button has been included, but you
+                                can (and should) modify this to your
+                                experiment tasks:
+
+                                    - Create multiple buttons if necessary
+                                    - No button if you don't need it
+                                    - Etc
+                            -->
+                            <div class="row">
+                                <div class="col-12 right-button">
+                                    <button class="btn btn-primary" id="proceedMComprehensionQuiz" onclick="comprehensionQuiznextTask(this)">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+            </div>
+            <div class="row" id="comprehension-quiz-task-passed" hidden="true">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-8" id="instructions-text">
+                            <h2 style="text-align: center">
+                                <b style="color: green">
+                                    Access Granted
+                                </b>
+                            </h2>
+                            <br />
+                            <text id="comprehension-quiz-passed-experiment-information">
+                                <!-- 
+                                    MODIFY THE CONTENT IN HERE TO YOUR SATISFACTION!
+                                -->
+                                <h3 style="text-align: center">
+                                    We will now start the main part of the study.
+                                    <br />
+                                    <br />
+                                    Experiment synopsis goes here.
+                                </h3>
+                                <br />
+                                <h4 style="text-align: center">
+                                    Some other experiment information you may want to add.
+                                </h4>
+                            </text>
+                            <br />
+                            <h4 style="text-align: center">
+                                Press the
+                                <span>
+                                    <button class="btn btn-secondary btn-sm" disabled>
+                                        Start Study
+                                    </button>
+                                </span>
+                                button at the bottom of the page to begin.
+                            </h4>
+                        </div>
+                        <div class="col-2">
+        
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px">
+                        <div class="col-md-12" align="center">
+                            <button id="next-button" name="next" type="submit" class="btn btn-secondary" onclick="moveOntoMainExperiment()">
+                                Start Study
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="comprehension-quiz-task-try-again" hidden="true">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-8" id="instructions-text">
+                            <h2 style="text-align: center">
+                                <b style="color: orange">
+                                    Try Again
+                                </b>
+                            </h2>
+                            <br />
+                            <text id="comprehension-quiz-passed-experiment-information">
+                                <!-- 
+                                    MODIFY THE CONTENT IN HERE TO YOUR SATISFACTION!
+                                -->
+                                <h3 style="text-align: center">
+                                    Unfortunately, you have failed the comprehension quiz.
+                                    <br />
+                                    <br />
+                                    You have one more opportunity to pass the quiz to be eligible for this study.
+                                </h3>
+                                <br />
+                                <h4 style="text-align: center">
+                                    Some other experiment information you may want to add.
+                                </h4>
+                            </text>
+                            <br />
+                            <h4 style="text-align: center">
+                                Press the
+                                <span>
+                                    <button class="btn btn-warning btn-sm" disabled>
+                                        Try Again
+                                    </button>
+                                </span>
+                                button at the bottom of the page to reattempt the quiz.
+                            </h4>
+                        </div>
+                        <div class="col-2">
+        
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px">
+                        <div class="col-md-12" align="center">
+                            <button id="next-button" name="next" type="submit" class="btn btn-warning" onclick="tryQuizAgain()">
+                                Try Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="comprehension-quiz-task-failed" hidden="true">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-8" id="instructions-text">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <h2 style="color: red">
+                                        Access Denied
+                                    </h2>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <h3>
+                                        Thank you for your interest in this study.
+                                    </h3>
+                                    <h4>
+                                        Unfortunately, your HIT has been rejected. You will no longer be eligible to
+                                        participate in this study.
+                                    </h4>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <h5 style="color: red">
+                                        Note: This will affect your ranking on Amazon mTurk.
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+<script>
+    $(function () {
+        //$('#header-title').text('Classifying Images with AI Advice');
+        if ("{{ participant.experiment_type }}" == 'ai_help'){
+            $('#header-title').text('Classifying Images with AI Advice');
+        } else if ("{{ participant.experiment_type }}" == 'psychometric') {
+            $('#header-title').text('Classifying Noisy Images');
+        } else {
+            $('#header-title').text('Noisy Image Classification');
+        }
+    });
+    $('#task-number').css({
+        "background-color": "#94C83D"
+    });
+
+    /* FORM SUBMIT */
+    $(document).on('click', 'button', function(){
+        $("input[name='experiment_started']").val(true);
+    });
+</script>
+            
+        <!--
+            Custom JavaScript - Experiment Page Metadata and Functionality
+        -->
+        <script src="js/comprehension-quiz.js">
+        </script>
+    </body>
+</html>
