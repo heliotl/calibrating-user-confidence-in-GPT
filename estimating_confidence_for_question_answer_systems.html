@@ -21,6 +21,12 @@
             .site-header {
                 background-color: #0064a4 !important;
             }
+            #anteater-img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
             .page-footer {
                 background: url('images/madlablogo2.png');
                 background-repeat: no-repeat; background-position: center; background-size: contain;
@@ -87,7 +93,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-2">
-                        <img src="images/BCeater-right.png" width='139px' height='75px' />
+                        <img id="anteater-img" src="images/BCeater-right.png" width='139px' height='75px' />
                     </div>
                     <div class="col-8 text-center">
                         <!--
@@ -98,7 +104,7 @@
                         <h1 id="experiment-title">Experiment Name Goes Here</h1>
                     </div>
                     <div class="col-2">
-                        <img class="float-right" src="images/BCeater-left.png" width="139px" height="75px" />
+                        <img class="float-right" id="anteater-img" src="images/BCeater-left.png" width="139px" height="75px" />
                     </div>
                 </div>
             </div>

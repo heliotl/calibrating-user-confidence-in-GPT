@@ -19,7 +19,8 @@ This file should contain static experimental metadata such as:
 */
 
 //      Experiment Name
-var EXPERIMENT_NAME             = "Calibrating User Confidence in GPT";
+//var EXPERIMENT_NAME             = "Calibrating User Confidence in GPT";
+var EXPERIMENT_NAME             = "Estimating Confidence :<br />Question Answer Systems";
 
 //      Section Headers
 var SECTION_TITLE_CONSENT_PAGE  = "Consent Page";
