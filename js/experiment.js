@@ -46,10 +46,10 @@ var debugQuestion = {
 var debugQuestion = {
     'Question': `
         For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020?
-            <br />
-            <text style="padding-left: 20px">Scenario 1 | I kissed my niece at the magic show.</text>
-            <br />
-            <text style="padding-left: 20px">Scenario 2 | I put the matches up high where my son couldn't reach them.</text>
+        <br />
+        <text style="padding-left: 20px">Scenario 1 | I kissed my niece at the magic show.</text>
+        <br />
+        <text style="padding-left: 20px">Scenario 2 | I put the matches up high where my son couldn't reach them.</text>
     `,
     'A': "Wrong, Wrong",
     'B': "Wrong, Not wrong",
@@ -76,7 +76,7 @@ var debugQuestion = {
 
         Therefore, the correct answer is [C] Not wrong, Wrong.
     `
-}
+};
 
 var trialList = [
     debugQuestion,
@@ -110,7 +110,7 @@ function presentTrial( trial ) {
     imageNow = "images/" + trialList[trial].Im;
 
     // And replace the source of the image -- browser will load new image
-    $('#trial-question').text(trialList[trial].Question); 
+    $('#trial-task').html(trialList[trial].Question); 
 
     $('#participant-trial-option-1').text(trialList[trial].A); 
     $('#ai-trial-option-A').text(trialList[trial].A);
