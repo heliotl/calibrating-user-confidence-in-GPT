@@ -1,0 +1,249 @@
+<!--
+experiment.html
+
+    Author      :   Helio Tejeda
+    University  :   University of California, Irvine
+    Lab         :   Modeling and Decision-Making Lab (MADLAB)
+
+Experiment HTML file.
+
+This file contains all of the task information for the experiment.
+
+Remember that this is a template. You will need to populate this
+file as you need for your given experiment. What is given here is
+simply a container that has space for you to input the necessary
+code for you experiment trials.
+
+Be sure to update the experiment.js file with all of the task
+metadata necessary.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="css/experiment.css">
+    </head>
+    <body>
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 trialbox justify-content-center" id="mainexperiment" style="display:visible;">
+            <!-- Actual trial question/information goes here -->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <!-- 
+                        Modify this value using JS (updated trial by trial)
+                        To update this value, use:
+
+                        $('#trial-task').html(
+                            "WHATEVER YOU WANT GOES HERE"
+                        );
+                    -->
+                    <h4 class="trial-task trial-question trial-information" id="trial-task" style="text-align: left">
+                        For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020?
+                        <br />
+                        <text style="padding-left: 20px">Scenario 1 | I kissed my best friend's wife</text>
+                        <br />
+                        <text style="padding-left: 20px">Scenario 2 | I keep boxes of candy in my van to draw in kids.</text>
+                    </h4>
+                </div>
+            </div>
+            <!--
+            ******************
+            *   Trial Content
+            ******************
+            -->
+            <div class="row">
+                <div class="col-12" id="trialMainContent">
+                    <!--
+                    ************************************
+                    *   Update the content in here to
+                    *   your satisfaction for the
+                    *   experiment you are conducting
+                    ************************************
+
+                    NOTE:
+                        You will need to add divs, spans, buttons, etc
+                        in here to create the task activity you want!
+
+                        This is left completely empty for you to fill
+                        in as you wish :)
+                    -->
+                    <div class="row" id="experiment-display-option-01">
+                        <div class="col-12" id="trial-answers-container">
+                                
+                            <div class="row">
+                                <!--    Participant Task Container     -->
+                                <div class="col-12" id="participant-task-container">
+                                    <div class="row justify-content-between">
+                                        <div class="col-12 text-center">
+                                            <h4>
+                                                Options
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px">
+                                    </div>
+                                    <!--    Trial Answers : Option A     -->
+                                    <div class="row justify-content-between">
+                                        <div class="col-12">
+                                            <button id="participant-trial-option-A" name="patA" type="submit" class="btn btn-light" onclick="trailOption1(this)" style="width: 100%">
+                                                <span class="float-left">
+                                                    <b>A</b> :
+                                                </span>
+                                                <span class="text-center" id="participant-trial-option-1">
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px">
+                                    </div>
+                                    <!--    Trial Answers : Option B     -->
+                                    <div class="row justify-content-between">
+                                        <div class="col-12">
+                                            <button id="participant-trial-option-B" name="patB" type="submit" class="btn btn-light" onclick="trailOption2(this)" style="width: 100%">
+                                                <span class="float-left">
+                                                    <b>B</b> :
+                                                </span>
+                                                <span class="text-center" id="participant-trial-option-2">
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px">
+                                    </div>
+                                    <!--    Trial Answers : Option C     -->
+                                    <div class="row justify-content-between">
+                                        <div class="col-12">
+                                            <button id="participant-trial-option-C" name="patC" type="submit" class="btn btn-light" onclick="trailOption3(this)" style="width: 100%">
+                                                <span class="float-left">
+                                                    <b>C</b> :
+                                                </span>
+                                                <span class="text-center" id="participant-trial-option-3">
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px">
+                                    </div>
+                                    <!--    Trial Answers : Option D     -->
+                                    <div class="row justify-content-between">
+                                        <div class="col-12">
+                                            <button id="participant-trial-option-D" name="patD" type="submit" class="btn btn-light" onclick="trailOption4(this)" style="width: 100%">
+                                                <span class="float-left">
+                                                    <b>D</b> :
+                                                </span>
+                                                <span class="text-center" id="participant-trial-option-4">
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" id="ai-trial-answers">
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <h4 id="ai-trial-answers-vertical">
+                                                AI Response
+                                            </h4>
+                                            <h5 id="ai-trial-answers-explanation" style="text-align: left">
+                                                The response generated by chatGPT 3.5 will be rendered here.
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <!--    Trial Answers : Confidence     -->
+                            <div class="row" id="participant-likert-scale-container">
+                                <div class="col-md-12 text-center mb-1">
+                                    <h4 id="participant-likert-scale-header">Estimated Confidence</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-sm-12 col-xs-12 text-center" id="low-button-container" style="padding-top: 5px; padding-bottom: 5px">
+                                    <ul class='likert' id="participant-likert-options-selection">
+                                        <li>
+                                            <input type="radio" name="likert" value="0">
+                                            <label>0</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="10">
+                                            <label>10</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="20">
+                                            <label>20</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="30">
+                                            <label>30</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="40">
+                                            <label>40</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="50">
+                                            <label>50</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="60">
+                                            <label>60</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="70">
+                                            <label>70</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="80">
+                                            <label>80</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="90">
+                                            <label>90</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="likert" value="100">
+                                            <label>100</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    **************************
+                    *   Submit/Proceed Button
+                    **************************
+
+                    NOTE:
+                        A proceed button has been included, but you
+                        can (and should) modify this to your
+                        experiment tasks:
+
+                            - Create multiple buttons if necessary
+                            - No button if you don't need it
+                            - Etc
+                    -->
+                    <div class="row">
+                        <div class="col-12 right-button">
+                            <button class="btn btn-primary" id="proceedMainexperiment" onclick="nextTask(this)" disabled>
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <!--
+            Custom JavaScript - Experiment Page Metadata and Functionality
+        -->
+        <script src="js/experiment.js">
+        </script>
+    </body>
+</html>

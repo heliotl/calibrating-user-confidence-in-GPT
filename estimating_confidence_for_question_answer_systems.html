@@ -62,12 +62,6 @@
                 color: #ffffff;
                 padding-top: 0.5em;
             }
-            #trial-task {
-                padding-top: 15px;
-                padding-bottom: 15px;
-                border-top: 2px solid #0064a4;
-                border-bottom: 2px solid #0064a4;
-            }
         </style>
 
         <!--
@@ -83,7 +77,8 @@
                 $('#consent-main-content').load("html/consent.html");
                 $('#instructions-main-content').load("html/instructions.html");
                 $('#comprehension-quiz-main-content').load('html/comprehension-quiz.html');
-                $('#task-main-content').load('html/experiment.html');
+                $('#task-main-content').load('html/experiment_opt01.html');
+                //$('#task-main-content').load('html/experiment_opt02.html');
             });
         </script>
 
@@ -101,7 +96,7 @@
                         *                       EXPERIMENT NAME                        *
                         ****************************************************************
                         -->
-                        <h1 id="experiment-title">Experiment Name Goes Here</h1>
+                        <h2 id="experiment-title">Experiment Name Goes Here</h2>
                     </div>
                     <div class="col-2">
                         <img class="float-right" id="anteater-img" src="images/BCeater-left.png" width="139px" height="75px" />
@@ -150,10 +145,41 @@
                     </h1>
                     <!--
                         Task Page
-                    -->
+                    -- >
                     <h1 class="page-title-header" id="task-header">
                         Task
                     </h1>
+                    <!--
+                    **********************
+                    *   Trial Information
+                    **********************
+                    -->
+                    <h2 class="page-title-header" id="task-header">
+                        Question
+                        <!-- 
+                            Update the value X using JS (update trial by trial)
+                            To update this value, use:
+
+                            $('#trialCounter').text(
+                                CurrentTrialNumber
+                            );
+                        -->
+                        <span id="trialCounter">
+                            X
+                        </span>
+                        of
+                        <!-- 
+                            Modify the value of Y using JS (only needs to be done once)
+                            To update this value, use:
+
+                            $('#trialCounter-total').text(
+                                TOTAL_TRIALS
+                            );
+                        -->
+                        <span id="trialCounter-total">
+                            Y
+                        </span>
+                    </h2>
                     <!--
                         Experiment Completed Page
                     -->
