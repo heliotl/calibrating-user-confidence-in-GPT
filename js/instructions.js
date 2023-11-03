@@ -53,6 +53,69 @@ function skipInstructions() {
     $("#comprehension-quiz-main-content").attr("hidden", false);
 };
 
+// If options are not shown, then it doesn't matter that chatGPT discusses the other options
+// People will not know that it was considering other options. It could just be chatGPT
+// being extra and
+
+/*
+Look into all participant classifications
+for each category divide by number of participant that selected that category, then we have
+a percentage probability for each category for each image
+
+we can use this as a ECE graph for humans
+*/
+
+function determineActionForInstructionPage() {
+    if (CURRENT_INSTRUCTION_PAGE == 3){
+        $("#instruction-trial-task").css({"background-color": "yellow"});
+        $("#instruction-participant-task-container").css({"opacity": 0.25});
+        $("#instruction-chatGPT-explanation").css({"opacity": 0.25});
+        $("#instruction-participant-response-area").css({"opacity": 0.25});
+        //$("#instruction-likert-button-container").css({"opacity": 0.25});
+        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+    } else if (CURRENT_INSTRUCTION_PAGE == 4){
+        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
+        $("#instruction-participant-task-container").css({"background-color": "yellow", "opacity": 1});
+        $("#instruction-chatGPT-explanation").css({"opacity": 0.25});
+        $("#instruction-participant-response-area").css({"opacity": 0.25});
+        //$("#instruction-likert-button-container").css({"opacity": 0.25});
+        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+    } else if (CURRENT_INSTRUCTION_PAGE == 5){
+        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
+        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 0.25});
+        $("#instruction-chatGPT-explanation").css({"background-color": "yellow", "opacity": 1, "color": "black"});
+        $("#intruction-chatGPT-header").css({"background-color": "yellow", "opacity": 1, "color": "black"});
+        $("#instruction-participant-response-area").css({"opacity": 0.25});
+        //$("#instruction-likert-button-container").css({"opacity": 0.25});
+        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+    } else if (CURRENT_INSTRUCTION_PAGE == 6){
+        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
+        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 0.25});
+        $("#instruction-chatGPT-explanation").css({"background-color": "", "opacity": 0.25, "color": "white"});
+        $("#intruction-chatGPT-header").css({"background-color": "", "opacity": 0.25, "color": "white"});
+        $("#instruction-participant-response-area").css({"background-color": "yellow", "opacity": 1});
+        //$("#instruction-likert-button-container").css({"background-color": "yellow", "opacity": 0.25});
+        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+    } else if (CURRENT_INSTRUCTION_PAGE == 7){
+        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
+        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 0.25});
+        $("#instruction-chatGPT-explanation").css({"background-color": "", "opacity": 0.25, "color": "white"});
+        $("#intruction-chatGPT-header").css({"background-color": "", "opacity": 0.25, "color": "white"});
+        $("#instruction-participant-response-area").css({"background-color": "", "opacity": 1});
+        //$("#instruction-likert-button-container").css({"background-color": "yellow", "opacity": 0.25});
+        $("#instruction-proceedMainexperiment").css({"background-color": "yellow", "opacity": 1, "color": "black"});
+    } else if (CURRENT_INSTRUCTION_PAGE >= 8){
+        // Reset everything back to normal
+        $("#instruction-trial-task").css({"background-color": "", "opacity": 1});
+        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 1});
+        $("#instruction-chatGPT-explanation").css({"background-color": "", "opacity": 1, "color": "white"});
+        $("#intruction-chatGPT-header").css({"background-color": "", "opacity": 1, "color": "white"});
+        $("#instruction-participant-response-area").css({"background-color": "", "opacity": 1});
+        //$("#instruction-likert-button-container").css({"background-color": "yellow", "opacity": 0.25});
+        $("#instruction-proceedMainexperiment").css({"background-color": "", "opacity": 1, "color": ""});
+    }
+};
+
 // Instruction Page Navigation Buttons
 function previousInstructionButton() {
     /*
@@ -170,8 +233,11 @@ function nextInstructionButton() {
         if (PREVIOUS_BUTTON_DISABLED){
             PREVIOUS_BUTTON_DISABLED = false;
             $("#previous-button").prop('disabled', PREVIOUS_BUTTON_DISABLED);
+            $("#instruction-task-interface").attr('hidden', false)
         }
     }
+
+    determineActionForInstructionPage();
 
     // For DEBUG purposes
     console.log( 'Instruction Number' + CURRENT_INSTRUCTION_PAGE );
@@ -252,4 +318,6 @@ $(document).ready(function (){
 
     // Determine if we are in DEBUG mode
     debugInstructions();
+
+
 });
