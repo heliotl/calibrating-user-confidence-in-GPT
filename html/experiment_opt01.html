@@ -22,287 +22,234 @@ metadata necessary.
         <link rel="stylesheet" href="css/experiment.css">
     </head>
     <body>
-        <!--<div class="col-1">
-
-        </div>-->
-        <div class="col-12 trialbox justify-content-center" id="mainexperiment" style="display:visible;">
-            <!-- Actual trial question/information goes here -->
-            <div class="row">
-                <div class="col-12 text-center">
-                    <!-- 
-                        Modify this value using JS (updated trial by trial)
-                        To update this value, use:
-
-                        $('#trial-task').html(
-                            "WHATEVER YOU WANT GOES HERE"
-                        );
-                    -->
-                    <h4 class="trial-task trial-question trial-information" id="trial-task" style="text-align: left">
-                        For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020?
-                        <br />
-                        <text style="padding-left: 20px">Scenario 1 | I kissed my best friend's wife</text>
-                        <br />
-                        <text style="padding-left: 20px">Scenario 2 | I keep boxes of candy in my van to draw in kids.</text>
-                    </h4>
+        <!--------------------------------------------------------------------------------
+        ----------------------------------------------------------------------------------
+        |   Trial Content - Main Container                                               |
+        |       This holds all of the trial content for a given task                     |
+        ----------------------------------------------------------------------------------
+        --------------------------------------------------------------------------------->
+        <div class="col-12 trialbox justify-content-center" id="mainexperiment-container">
+            <!--------------------------------------------
+            |   Row 1 - Trial Question                   |
+            |       Actual trial question/information    |
+            |       goes here (including topic).         |
+            --------------------------------------------->
+            <div class="row" id="task-question-container">
+                <!-- Trial Question Topic Information -->
+                <div class="col-12 text-left" id="task-question-container-topic">
+                    <h5 id="task-question-container-topic-header">
+                        <span>
+                            Topic :
+                        </span>
+                        <!-- Update trial question topic information here -->
+                        <span id="task-question-container-topic-name">
+                            Name of Topic
+                        </span>
+                    </h5>
+                </div>
+                <!-- Trial Question Information (actual question) -->
+                <div class="col-12 text-center" id="trial-task-container">
+                    <!-- Update trial question here -->
+                    <h5 class="trial-task trial-question trial-information" id="trial-task">
+                        Trial Question Goes Here
+                    </h5>
                 </div>
             </div>
-            <!--
-            ******************
-            *   Trial Content
-            ******************
-            -->
-            <div class="row">
-                <div class="col-12" id="trialMainContent">
-                    <!--
-                    ************************************
-                    *   Update the content in here to
-                    *   your satisfaction for the
-                    *   experiment you are conducting
-                    ************************************
-
-                    NOTE:
-                        You will need to add divs, spans, buttons, etc
-                        in here to create the task activity you want!
-
-                        This is left completely empty for you to fill
-                        in as you wish :)
-                    -->
-                    <div class="row" id="experiment-display-option-01">
-                        <div class="col-12" id="trial-answers-container">
-                                
-                            <div class="row">
-                                <!--    Participant Task Container     -->
-                                <div class="col-5" id="participant-task-container" style="display: grid">
-                                <!--<div class="col-5" id="participant-task-container">-->
-                                    <div class="row justify-content-between">
-                                        <div class="col-12 text-center">
-                                            <h4 style="margin-top: 0.5rem">
-                                                Options
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 10px">
-                                    </div>
-                                    <!--    Trial Answers : Option A     -->
-                                    <div class="row justify-content-between">
-                                        <div class="col-12">
-                                            <button id="participant-trial-option-A" name="patA" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption1(this)" disabled>
-                                                <span class="float-left">
-                                                    <b>A</b> :
-                                                </span>
-                                                <span class="text-center" id="participant-trial-option-1">
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 10px">
-                                    </div>
-                                    <!--    Trial Answers : Option B     -->
-                                    <div class="row justify-content-between">
-                                        <div class="col-12">
-                                            <button id="participant-trial-option-B" name="patB" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption2(this)" disabled>
-                                                <span class="float-left">
-                                                    <b>B</b> :
-                                                </span>
-                                                <span class="text-center" id="participant-trial-option-2">
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 10px">
-                                    </div>
-                                    <!--    Trial Answers : Option C     -->
-                                    <div class="row justify-content-between">
-                                        <div class="col-12">
-                                            <button id="participant-trial-option-C" name="patC" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption3(this)" disabled>
-                                                <span class="float-left">
-                                                    <b>C</b> :
-                                                </span>
-                                                <span class="text-center" id="participant-trial-option-3">
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 10px">
-                                    </div>
-                                    <!--    Trial Answers : Option D     -->
-                                    <div class="row justify-content-between">
-                                        <div class="col-12">
-                                            <button id="participant-trial-option-D" name="patD" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption4(this)" disabled> 
-                                                <span class="float-left">
-                                                    <b>D</b> :
-                                                </span>
-                                                <span class="text-center" id="participant-trial-option-4">
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="padding-bottom: 10px">
-                                    </div>
-                                </div>
-                                <div class="col-7" id="ai-trial-answers-horizontal">
-                                    <div class="row">
-                                        <div class="col-12 text-center" style="border: 5px solid rgb(25, 195, 125); background-color: #565869; border-radius: 5px; color: white"> <!--</div>#ffd200-->
-                                            <div class="row">
-                                                <div class="col-12 text-center" style="background-color: #40414f; border-bottom: 2px solid black">
-                                                    <p style="margin-top: 0.5rem; margin-bottom: 0.5rem; text-align: left">
-                                                        Default (GPT-3.5)
-                                                    </p>
-                                                    <!--<p style="margin-top: 0.5rem; margin-bottom: 0.5rem; font-size: 18pt">
-                                                        GPT-3.5
-                                                    </p>-->
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-left" style="margin-top: 0.5rem">
-                                                <div class="col-1 text-left">
-                                                    <img style="background-color: rgb(25, 195, 125); border-radius: 5px;" src="images/ChatGPT_logo_v2.svg" />
-                                                </div>
-                                                <div class="col-11 text-left">
-                                                    <p id="ai-trial-answers-explanation" style="text-align: left; padding-left: 10px">
-                                                        The response generated by chatGPT 3.5 will be rendered here.
-                                                    </p>
-                                                    <!--<h5 id="ai-trial-answers-explanation" style="text-align: left; padding-left: 10px">
-                                                        The response generated by chatGPT 3.5 will be rendered here.
-                                                    </h5>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container" id="ai-help-information" hidden>
-                                        <div class="row" style="padding-bottom: 10px">
-                                        </div>
-                                        <!--    AI Help : Option A     -->
-                                        <div class="row">
-                                            <div class="col-12" id="ai-trial-option-1">
-                                                <button id="ai-trial-option-A" name="aiA" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                    <span class="text-center" id="ai-trial-option-1">
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="padding-bottom: 10px">
-                                        </div>
-                                        <!--    AI Help : Option B     -->
-                                        <div class="row">
-                                            <div class="col-12" id="ai-trial-option-2">
-                                                <button id="ai-trial-option-B" name="aiB" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                    <span class="text-center" id="ai-trial-option-2">
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="padding-bottom: 10px">
-                                        </div>
-                                        <!--    AI Help : Option C     -->
-                                        <div class="row">
-                                            <div class="col-12" id="ai-trial-option-3">
-                                                <button id="ai-trial-option-C" name="aiC" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                    <span class="text-center" id="ai-trial-option-3">
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="padding-bottom: 10px">
-                                        </div>
-                                        <!--    AI Help : Option D     -->
-                                        <div class="row">
-                                            <div class="col-12" id="ai-trial-option-4">
-                                                <button id="ai-trial-option-D" name="aiD" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                    <span class="text-center" id="ai-trial-option-4">
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="row" style="padding-bottom: 10px">
-                                        </div>
-                                        <!--    AI Help : Gradient     -->
-                                        <div class="container" id="ai-help-options-container-gradient" style="padding-left: 0px; padding-right: 0px">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center mb-1">
-                        
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 col-sm-12 col-xs-12 text-center" id="ai-help-gradient-span" style="padding-top: 5px; padding-bottom: 5px">
-                                                    <div style="width: 100%;">
-                                                        <span style="float: left">
-                                                            Low
-                                                        </span>
-                                                        <span style="float: right">
-                                                            High
-                                                        </span>
-                                                        <span>
-                                                            <h4>AI Confidence</h4>
-                                                        </span>
-                        
-                                                    </div>
-                                                    <div id="ai-confidence-gradient" style="width: 100%; height: 30px; border-style: solid; border-color: #000000; border-radius: 5px">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <!--    Trial Answers : Confidence     -->
-                            <div class="row" id="participant-likert-scale-container">
-                                <div class="col-md-12 text-center mb-1">
-                                    <h4 id="participant-likert-scale-header">
-                                        Estimated Confidence of GPT's Answer
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-md-12 col-sm-12 col-xs-12 text-center" id="low-button-container" style="padding-top: 5px; padding-bottom: 5px">
-                                    <ul class='likert' id="participant-likert-options-selection">
-                                        <li>
-                                            <input type="radio" name="likert" value="0">
-                                            <label>0</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="10">
-                                            <label>10</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="20">
-                                            <label>20</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="30">
-                                            <label>30</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="40">
-                                            <label>40</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="50">
-                                            <label>50</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="60">
-                                            <label>60</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="70">
-                                            <label>70</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="80">
-                                            <label>80</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="90">
-                                            <label>90</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="likert" value="100">
-                                            <label>100</label>
-                                        </li>
-                                      </ul>
-                                </div>
-                            </div>
+            <!---------------------------------------------------
+            |   Row 2 - Trial Options and GPT Input             |
+            |       A, B, C, and D options are shown on the     |
+            |       the left panel and GPT response (AI help)   |
+            |       is shown on the right panel.                |
+            ---------------------------------------------------->
+            <div class="row" id="task-options-and-gpt-container">
+                <!-- Trial Options (A, B, C, and D) -->
+                <div class="col-5" id="task-options-container">
+                    <!-- Trial Options - Header -->
+                    <div class="row justify-content-between" id="task-options-header-container">
+                        <div class="col-12 text-center" id="task-options-header">
+                            <h4 id="task-options-header-text">
+                                Options
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- Trial Options - Choices -->
+                    <div class="row justify-content-between" id="task-options-choices-container">
+                        <!-- Option A -->
+                        <div class="col-12" id="task-options-choices-container-A">
+                            <button id="participant-trial-option-A" name="patA" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption1(this)" disabled>
+                                <span class="float-left">
+                                    <b>A</b> :
+                                </span>
+                                <span class="text-center" id="participant-trial-option-text-A">
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Option B -->
+                        <div class="col-12" id="task-options-choices-container-B">
+                            <button id="participant-trial-option-B" name="patB" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption2(this)" disabled>
+                                <span class="float-left">
+                                    <b>B</b> :
+                                </span>
+                                <span class="text-center" id="participant-trial-option-text-B">
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Option C -->
+                        <div class="col-12" id="task-options-choices-container-C">
+                            <button id="participant-trial-option-C" name="patC" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption3(this)" disabled>
+                                <span class="float-left">
+                                    <b>C</b> :
+                                </span>
+                                <span class="text-center" id="participant-trial-option-text-C">
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Option D -->
+                        <div class="col-12" id="task-options-choices-container-D">
+                            <button id="participant-trial-option-D" name="patD" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption4(this)" disabled> 
+                                <span class="float-left">
+                                    <b>D</b> :
+                                </span>
+                                <span class="text-center" id="participant-trial-option-text-D">
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chat GPT Input/Help -->
+                <div class="col-7" id="task-gpt-container">
+                    <!-- Chat GPT Header -->
+                    <div class="row" id="task-gpt-header-container">
+                        <div class="col-12 text-center">
+                            <p id="task-gpt-header-text">
+                                Default (GPT-3.5)
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Chat GPT Output Text-Box -->
+                    <div class="row justify-content-left" id="task-gpt-text-box-container">
+                        <!-- Chat GPT Image/Logo -->
+                        <div class="col-1 text-left" id="task-gpt-text-box-image-container">
+                            <img src="images/ChatGPT_logo_v2.svg" id="task-gpt-text-box-image" />
+                        </div>
+                        <!-- Chat GPT Explanation -->
+                        <div class="col-11 text-left" id="task-gpt-text-box-explanation-container">
+                            <p id="task-gpt-text-box-explanation-text">
+                                The response generated by chatGPT 3.5 will be rendered here.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-----------------------------------------------------------
+            |   Row 3 - Trial Likert Scale & Submit Button              |
+            |       Likert scale will go from 25-100 (increments of 5)  |
+            |       and will contain the submit button. The submit      |
+            |       button will not be accessable unctil a likert       |
+            |       radio button has been selected. The task is         |
+            |       completed in 2 phases:                              |
+            |                                                           |
+            |           Phase 1 -   Participant selects prob GPT is     |
+            |                       correct                             |
+            |           Phase 2 -   Participant makes their own         |
+            |                       selection with the help of GPT      |
+            ------------------------------------------------------------>
+            <div class="row" id="task-likert-scale-and-submit-container">
+                <!-- Phase Completion by clicking on Submit -->
+                <div class="col-12">
+                    <!-- Question Header - Probability GPT is correct? -->
+                    <div class="row" id="task-likert-scale-header-container">
+                        <div class="col-md-12 text-center mb-1">
+                            <h4 id="task-likert-scale-header-text">
+                                What is the probability that GPT's answer is correct?
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- Likert Scale -->
+                    <div class="row">
+                        <div class="col-12 text-center" id="task-likert-scale-radio-button-container">
+                            <ul class='likert' id="task-likert-scale-radio-button-selection">
+                                <li>
+                                    <label>25</label>
+                                    <input type="radio" name="likert" value="25">
+                                    <label>Guessing (Chance)</label>
+                                </li>
+                                <li>
+                                    <label>30</label>
+                                    <input type="radio" name="likert" value="30">
+                                    
+                                </li>
+                                <li>
+                                    <label>35</label>
+                                    <input type="radio" name="likert" value="35">
+                                    
+                                </li>
+                                <li>
+                                    <label>40</label>
+                                    <input type="radio" name="likert" value="40">
+                                    
+                                </li>
+                                <li>
+                                    <label>45</label>
+                                    <input type="radio" name="likert" value="45">
+                                    
+                                </li>
+                                <li>
+                                    <label>50</label>
+                                    <input type="radio" name="likert" value="50">
+                                    
+                                </li>
+                                <li>
+                                    <label>55</label>
+                                    <input type="radio" name="likert" value="55">
+                                    
+                                </li>
+                                <li>
+                                    <label>60</label>
+                                    <input type="radio" name="likert" value="60">
+                                    
+                                </li>
+                                <li>
+                                    <label>65</label>
+                                    <input type="radio" name="likert" value="65">
+                                    
+                                </li>
+                                <li>
+                                    <label>70</label>
+                                    <input type="radio" name="likert" value="70">
+                                    
+                                </li>
+                                <li>
+                                    <label>75</label>
+                                    <input type="radio" name="likert" value="75">
+                                    
+                                </li>
+                                <li>
+                                    <label>80</label>
+                                    <input type="radio" name="likert" value="80">
+                                    
+                                </li>
+                                <li>
+                                    <label>85</label>
+                                    <input type="radio" name="likert" value="85">
+                                    
+                                </li>
+                                <li>
+                                    <label>90</label>
+                                    <input type="radio" name="likert" value="90">
+                                    
+                                </li>
+                                <li>
+                                    <label>95</label>
+                                    <input type="radio" name="likert" value="95">
+                                    
+                                </li>
+                                <li>
+                                    <label>100</label>
+                                    <input type="radio" name="likert" value="100">
+                                    <label>Absolutely Certain</label>
+                                </li>
+                                </ul>
                         </div>
                     </div>
                     <!--
@@ -319,9 +266,9 @@ metadata necessary.
                             - No button if you don't need it
                             - Etc
                     -->
-                    <div class="row" id="participant-task-options-container-submit">
+                    <div class="row" id="task-submit-button-container">
                         <div class="col-12 right-button">
-                            <button class="btn btn-primary" id="proceedMainexperiment" onclick="nextTask(this)" disabled>
+                            <button class="btn btn-primary" id="proceedMainexperiment" onclick="nextPhase()" disabled>
                                 Submit
                             </button>
                         </div>
@@ -329,9 +276,6 @@ metadata necessary.
                 </div>
             </div>
         </div>
-        <!--<div class="col-1">
-
-        </div>-->
         <!--
             Custom JavaScript - Experiment Page Metadata and Functionality
         -->
