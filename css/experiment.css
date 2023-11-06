@@ -44,8 +44,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
     
 }
 #task-question-container-topic-name {
-    text-align: right;
-    float: right;
+    /*float: right;*/
 }
 #trial-task {
     text-align: left;
@@ -167,7 +166,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 *   Row 3                             *
 *   Trial Likert & Submit Buttons     *
 **************************************/
-#task-likert-scale-and-submit-container {
+#task-likert-scale-container {
     padding-top: 1rem;
     border-top: 2px solid #0064a4;
 }

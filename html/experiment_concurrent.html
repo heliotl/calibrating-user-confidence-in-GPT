@@ -68,7 +68,7 @@ This file contains all of the task information for the experiment.
                     <div class="row justify-content-between" id="task-options-choices-container">
                         <!-- Option A -->
                         <div class="col-12" id="task-options-choices-container-A">
-                            <button id="participant-trial-option-A" name="patA" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption1(this)" disabled>
+                            <button id="participant-trial-option-A" name="patA" type="button" class="btn btn-dark participant-trial-option" disabled>
                                 <span class="float-left">
                                     <b>A</b> :
                                 </span>
@@ -78,7 +78,7 @@ This file contains all of the task information for the experiment.
                         </div>
                         <!-- Option B -->
                         <div class="col-12" id="task-options-choices-container-B">
-                            <button id="participant-trial-option-B" name="patB" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption2(this)" disabled>
+                            <button id="participant-trial-option-B" name="patB" type="button" class="btn btn-dark participant-trial-option" disabled>
                                 <span class="float-left">
                                     <b>B</b> :
                                 </span>
@@ -88,7 +88,7 @@ This file contains all of the task information for the experiment.
                         </div>
                         <!-- Option C -->
                         <div class="col-12" id="task-options-choices-container-C">
-                            <button id="participant-trial-option-C" name="patC" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption3(this)" disabled>
+                            <button id="participant-trial-option-C" name="patC" type="button" class="btn btn-dark participant-trial-option" disabled>
                                 <span class="float-left">
                                     <b>C</b> :
                                 </span>
@@ -98,7 +98,7 @@ This file contains all of the task information for the experiment.
                         </div>
                         <!-- Option D -->
                         <div class="col-12" id="task-options-choices-container-D">
-                            <button id="participant-trial-option-D" name="patD" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption4(this)" disabled> 
+                            <button id="participant-trial-option-D" name="patD" type="button" class="btn btn-dark participant-trial-option" disabled> 
                                 <span class="float-left">
                                     <b>D</b> :
                                 </span>
@@ -146,7 +146,7 @@ This file contains all of the task information for the experiment.
             |           Phase 2 -   Participant makes their own         |
             |                       selection with the help of GPT      |
             ------------------------------------------------------------>
-            <div class="row" id="task-likert-scale-and-submit-container">
+            <div class="row" id="task-likert-scale-container">
                 <!-- Phase Completion by clicking on Submit -->
                 <div class="col-12">
                     <!-- Question Header - Probability GPT is correct? -->
@@ -244,27 +244,27 @@ This file contains all of the task information for the experiment.
                                 </ul>
                         </div>
                     </div>
-                    <!--
-                    **************************
-                    *   Submit/Proceed Button
-                    **************************
+                </div>
+            </div>
+            <!--
+            **************************
+            *   Submit/Proceed Button
+            **************************
 
-                    NOTE:
-                        A proceed button has been included, but you
-                        can (and should) modify this to your
-                        experiment tasks:
+            NOTE:
+                A proceed button has been included, but you
+                can (and should) modify this to your
+                experiment tasks:
 
-                            - Create multiple buttons if necessary
-                            - No button if you don't need it
-                            - Etc
-                    -->
-                    <div class="row" id="task-submit-button-container">
-                        <div class="col-12 right-button">
-                            <button class="btn btn-primary" id="proceedMainexperiment" onclick="nextPhase()" disabled>
-                                Submit
-                            </button>
-                        </div>
-                    </div>
+                    - Create multiple buttons if necessary
+                    - No button if you don't need it
+                    - Etc
+            -->
+            <div class="row" id="task-submit-button-container">
+                <div class="col-12 right-button">
+                    <button class="btn btn-primary" id="proceedMainexperiment" disabled>
+                        Submit
+                    </button>
                 </div>
             </div>
         </div>
