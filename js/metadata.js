@@ -17,6 +17,8 @@ This file should contain static experimental metadata such as:
 /*
     METADATA
 */
+// DEBUG MODE
+var DEBUG = true;
 
 //      Experiment Name
 //var EXPERIMENT_NAME             = "Calibrating User Confidence in GPT";
@@ -25,7 +27,7 @@ var EXPERIMENT_NAME             = "Estimating Confidence : Question Answer Syste
 //      Section Headers
 var SECTION_TITLE_CONSENT_PAGE  = "Consent Page";
 var SECTION_TITLE_INSTRUCTIONS  = "Instructions";
-var SECTION_TITLE_QUIZ          = "Comprehension Quiz";
+var SECTION_TITLE_QUIZ          = "Integrity Pledge";
 //var SECTION_TITLE_EXPERIMENT    = "Experiment";
 var SECTION_TITLE_COMPLETION    = "Task Completed";
 
