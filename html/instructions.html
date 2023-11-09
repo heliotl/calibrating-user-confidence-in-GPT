@@ -32,403 +32,426 @@ file appropriately!
         <link rel="stylesheet" href="css/instructions.css">
     </head>
     <body>
-        <div class="col-12 mb-2" style="text-align: center">
-            <div class="row justify-content-center" id="instruction-text">
+        <div class="col-12 mb-2 trialbox" id="instruction-main-container">
+            <!-- Instruction Text -->
+            <div class="row" id="instruction-text-container">
                 <div class="col-md-12 instruction-page" id="instruction-page-01">
-                    <h3>
-                        <b style="color: red">Please Read All Instructions Carefully</b>
-                    </h3>
-                    <br />
-                    <h3>
-                        In this study you will estimate the confidence of chatGPT based on the explanation
-                        generated for a specific question/scenario.
-                        You will not be answering the question/scenario yourself; only estimating how confident 
-                        a GPT answer is for the given question/scenario.
+                    <h4 class="instruction-text-line-01" id="read-all-instructions-carefully">
+                        <b>Please Read All Instructions Carefully</b>
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        In this study you will estimate the accuracy of <i>ChatGPT</i> for various questions
+                        of different topics. You will be provided with <i>ChatGPT</i>'s explanation for a
+                        given question and must use your best judgement to estimate it's accuracy.
                         <br />
-                        Note that the chatGPT is not 100% accurate. You need to figure out how confident chatGPT
-                        is based on it's explanation for the given question/scenario.
-                    </h3>
-                    <br />
-                    <br />
-                    <h4>
-                        To participate in this study, you will be required
-                        to pass a quiz after reading through the instructions.
+                        <br />
+                        You will then answer that same question, to the best of your abilities, using the
+                        explanation provided by <i>ChatGPT</i> and your own knowledge. Use your best
+                        judgement when incorporating <i>ChatGPT</i>'s assistance into your decision making.
+                    </h4>
+                    <h5 class="instruction-text-line-03" id="navigate-instructions-text">
                         To navigate through the instructions, use the buttons at the
                         bottom of the page.
-                    </h4>
+                    </h5>
                 </div>
                 <div class="col-12 instruction-page" id="instruction-page-02" hidden="true">
-                    <h3>
-                        Below is an example of what the task will look like.
-                    </h3>
-                    <h4>
-                        The interface is broken up into five sections.
+                    <h4 class="instruction-text-line-01">
+                        Below is an example of what the task interface looks like.
                     </h4>
+                    <h4 class="instruction-text-line-02">
+                        The interface is broken up into six sections.
+                    </h4>
+                    <h5 class="instruction-text-line-03">
+                        We will go over each of the sections in detail over the next few instructions.
+                    </h5>
                 </div>
                 <div class="col-12" id="instruction-page-03" hidden="true">
-                    <h3>
-                        The first section (highlighted) contains the question/scenario for the current trial.
-                    </h3>
-                    <h4>
-                        During the study, there will be a different question/scenario for each trial.
+                    <h4 class="instruction-text-line-01">
+                        The <mark>first section</mark> contains the topic for the given trial.
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        There are a total of 10 topics:
+                        <br />
+                        <i>
+                            Anatomy, Global Gacts, High School Chemistry,
+                            High School Macroeconomics, High School Physics,
+                            High School World History, Machine Learning, Philosophy,
+                            Professional Psychology, Public Relations
+                        </i>
                     </h4>
                 </div>
                 <div class="col-12" id="instruction-page-04" hidden="true">
-                    <h3>
-                        The second section (highlighted) contains four multiple-choice options.
-                    </h3>
-                    <h4>
-                        These are the four possible answers to the given question/scenario.
+                    <h4 class="instruction-text-line-01">
+                        The <mark>second section</mark> contains the question for the given trial.
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        Be sure to read the question carefully.
                     </h4>
                 </div>
                 <div class="col-12" id="instruction-page-05" hidden="true">
-                    <h3>
-                        The third section (highlighted) contains chatGPT's answer to the prompt.
-                    </h3>
-                    <h4>
-                        The response is generated by...
+                    <h4 class="instruction-text-line-01">
+                        The <mark>third section</mark> contains <i>ChatGPT</i>'s explanation to the question.
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        The response is generated by passing the question and the options to <i>ChatGPT</i>.
                     </h4>
                 </div>
                 <div class="col-12" id="instruction-page-06" hidden="true">
-                    <h3>
-                        The fourth section (highlighted) contains <b>your</b> estimated confidence in GPT's answer.
-                    </h3>
-                    <h4>
-                        You are to select a single button reflecting how confident you are in GPT's answer.
+                    <h4 class="instruction-text-line-01">
+                        The <mark>fourth section</mark> contains an accuracy scale from 25% (chance) to 100%
+                        (certain).
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        Select a single button reflecting <b>your</b> estimate of <i>ChatGPT</i>'s accuracy
+                        for the given question.
                     </h4>
                 </div>
                 <div class="col-12" id="instruction-page-07" hidden="true">
-                    <h3>
-                        Finally, you submit your answer by selecting the "Submit" button (highlighted).
-                    </h3>
-                    <h4>
-                        Once you submit your response the next trial will begin with a new question.
+                    <h4 class="instruction-text-line-01">
+                        Notice that the scale does not start at 0% but rather at 25%.
                     </h4>
+                    <h4 class="instruction-text-line-02">
+                        If you believe <i>ChatGPT</i> is completely guessing, there is a 25% chance it
+                        guesses correctly.
+                    </h4>
+                    <h5 class="instruction-text-line-03">
+                        You must click on the radio button labeled <i>25 (Guessing)</i> before you can
+                        proceed.
+                    </h5>
                 </div>
                 <div class="col-12" id="instruction-page-08" hidden="true">
-                    Instructions Page 8
+                    <h4 class="instruction-text-line-01">
+                        Suppose <i>ChatGPT</i>'s explanation is able to eliminate <b>two</b> of the
+                        multiple-choice options.
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        Then <i>ChatGPT</i> is making a choice between the other <b>two</b> options,
+                        and will have 50% accuracy.
+                    </h4>
+                    <h5 class="instruction-text-line-03">
+                        You must click on the radio button labeled <i>50</i> before you can proceed.
+                    </h5>
                 </div>
                 <div class="col-12" id="instruction-page-09" hidden="true">
-                    Instructions Page 9
+                    <h4 class="instruction-text-line-01">
+                        The fifth section is the
+                        <button class="btn btn-secondary mark">
+                            Submit
+                        </button>
+                        button.
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        Once you submit your estimate of <i>ChatGPT</i>'s accuracy, you will then be tasked
+                        with answering the same question yourself.
+                    </h4>
                 </div>
                 <div class="col-12" id="instruction-page-10" hidden="true">
-                    Instructions Page 10
+                    <h4 class="instruction-text-line-01">
+                        The <mark>sixth section</mark> contains the four multiple-choice options to the
+                        given question.
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        Use your own knowledge and assistance from <i>ChatGPT</i>'s explanation to make the
+                        most accurate decision.
+                    </h4>
+                </div>
+                <div class="col-12" id="instruction-page-11" hidden="true">
+                    <h4 class="instruction-text-line-01">
+                        Suppose you have read the question and <i>ChatGPT</i>'s explanation and have
+                        determined that the answer is <i>Option B</i>.
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        You would then click on
+                        <button class="btn btn-dark">
+                            <span class="float-left">
+                                <b>B</b> :
+                            </span>
+                            <span class="text-center" id="instruction-participant-trial-option-text-B">
+                                Option B
+                            </span>
+                        </button>
+                        to select your answer, the click on
+                        <button class="btn btn-primary">
+                            Submit
+                        </button>
+                        to submit and proceed to the next question.
+                    </h4>
+                    <h5 class="instruction-text-line-03">
+                        Click on <i>Option B</i> to proceed to the next instruction.
+                    </h5>
+                </div>
+                <div class="col-12" id="instruction-page-12" hidden="true">
+                    <h4 class="instruction-text-line-01">
+                        Thank you for reading through the instructions completely!
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        There are 40 questions in this study. Remember to read each of them and
+                        <i>ChatGPT</i>'s explanations carefully and thoroughly while progressing
+                        through the study.
+                    </h4>
+                    <h5 class="instruction-text-line-03">
+                        At the end of the study you will be asked to answer a short survey, please
+                        be as honest as possible.
+                    </h5>
                 </div>
             </div>
-            <div class="row" id="instruction-task-interface" hidden="true">
-                <div class="col-12 trialbox justify-content-center" id="mainexperiment" style="display:visible;">
-                    <!-- Actual trial question/information goes here -->
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <!-- 
-                                Modify this value using JS (updated trial by trial)
-                                To update this value, use:
-
-                                $('#trial-task').html(
-                                    "WHATEVER YOU WANT GOES HERE"
-                                );
-                            -->
-                            <h4 class="trial-task trial-question trial-information" id="instruction-trial-task" style="text-align: left">
-                                For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020?
-                                <br />
-                                <text style="padding-left: 20px">Scenario 1 | I kissed my best friend's wife</text>
-                                <br />
-                                <text style="padding-left: 20px">Scenario 2 | I keep boxes of candy in my van to draw in kids.</text>
-                            </h4>
+            <!-- Experiment Container -->
+            <div class="row" id="instruction-example-task-container">
+                <div class="col-12 trialbox justify-content-center" id="instruction-mainexperiment-container">
+                    <!--------------------------------------------
+                    |   Row 1 - Trial Question                   |
+                    |       Actual trial question/information    |
+                    |       goes here (including topic).         |
+                    --------------------------------------------->
+                    <div class="row" id="instruction-task-question-container">
+                        <!-- Trial Question Topic Information -->
+                        <div class="col-12 text-left" id="instruction-task-question-container-topic">
+                            <h5 id="instruction-task-question-container-topic-header">
+                                <span>
+                                    Topic :
+                                </span>
+                                <!-- Update trial question topic information here -->
+                                <span id="instruction-task-question-container-topic-name">
+                                    Name of Topic
+                                </span>
+                            </h5>
+                        </div>
+                        <!-- Trial Question Information (actual question) -->
+                        <div class="col-12 text-center" id="instruction-trial-task-container">
+                            <!-- Update trial question here -->
+                            <h5 class="trial-task trial-question trial-information" id="instruction-trial-task">
+                                The question being asked will be displayed in text here. Be sure to read and
+                                understand the question completely and to the best of your abilities.
+                            </h5>
+                        </div>
+                    </div>
+                    <!---------------------------------------------------
+                    |   Row 2 - Trial Options and GPT Input             |
+                    |       A, B, C, and D options are shown on the     |
+                    |       the left panel and GPT response (AI help)   |
+                    |       is shown on the right panel.                |
+                    ---------------------------------------------------->
+                    <div class="row" id="instruction-task-options-and-gpt-container">
+                        <!-- Trial Options (A, B, C, and D) -->
+                        <div class="col-5" id="instruction-task-options-container">
+                            <!-- Trial Options - Header -->
+                            <div class="row justify-content-between" id="instruction-task-options-header-container">
+                                <div class="col-12 text-center" id="instruction-task-options-header">
+                                    <h5 id="instruction-task-options-header-text">
+                                        Options
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- Trial Options - Choices -->
+                            <div class="row justify-content-between" id="instruction-task-options-choices-container">
+                                <!-- Option A -->
+                                <div class="col-12" id="instruction-task-options-choices-container-A">
+                                    <button id="instruction-participant-trial-option-A" name="patA" type="button" class="btn btn-dark participant-trial-option" disabled>
+                                        <span class="float-left">
+                                            <b>A</b> :
+                                        </span>
+                                        <span class="text-center" id="instruction-participant-trial-option-text-A">
+                                            Option A
+                                        </span>
+                                    </button>
+                                </div>
+                                <!-- Option B -->
+                                <div class="col-12" id="instruction-task-options-choices-container-B">
+                                    <button id="instruction-participant-trial-option-B" name="patB" type="button" class="btn btn-dark participant-trial-option" disabled>
+                                        <span class="float-left">
+                                            <b>B</b> :
+                                        </span>
+                                        <span class="text-center" id="instruction-participant-trial-option-text-B">
+                                            Option B
+                                        </span>
+                                    </button>
+                                </div>
+                                <!-- Option C -->
+                                <div class="col-12" id="instruction-task-options-choices-container-C">
+                                    <button id="instruction-participant-trial-option-C" name="patC" type="button" class="btn btn-dark participant-trial-option" disabled>
+                                        <span class="float-left">
+                                            <b>C</b> :
+                                        </span>
+                                        <span class="text-center" id="instruction-participant-trial-option-text-C">
+                                            Option C
+                                        </span>
+                                    </button>
+                                </div>
+                                <!-- Option D -->
+                                <div class="col-12" id="instruction-task-options-choices-container-D">
+                                    <button id="instruction-participant-trial-option-D" name="patD" type="button" class="btn btn-dark participant-trial-option" disabled> 
+                                        <span class="float-left">
+                                            <b>D</b> :
+                                        </span>
+                                        <span class="text-center" id="instruction-participant-trial-option-text-D">
+                                            Option D
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chat GPT Input/Help -->
+                        <div class="col-7" id="instruction-task-gpt-container">
+                            <!-- Chat GPT Header -->
+                            <div class="row" id="instruction-task-gpt-header-container">
+                                <div class="col-12 text-center">
+                                    <p id="instruction-task-gpt-header-text">
+                                        Default (GPT-3.5)
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Chat GPT Output Text-Box -->
+                            <div class="row justify-content-left" id="instruction-task-gpt-text-box-container">
+                                <!-- Chat GPT Image/Logo -->
+                                <div class="col-1 text-left" id="instruction-task-gpt-text-box-image-container">
+                                    <img src="images/ChatGPT_logo_v2.svg" id="instruction-task-gpt-text-box-image" />
+                                </div>
+                                <!-- Chat GPT Explanation -->
+                                <div class="col-11 text-left" id="instruction-task-gpt-text-box-explanation-container">
+                                    <p id="instruction-task-gpt-text-box-explanation-text">
+                                        The response generated by chatGPT 3.5 will be rendered here.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------------------------------------------------------
+                    |   Row 3 - Trial Likert Scale & Submit Button              |
+                    |       Likert scale will go from 25-100 (increments of 5)  |
+                    |       and will contain the submit button. The submit      |
+                    |       button will not be accessable unctil a likert       |
+                    |       radio button has been selected. The task is         |
+                    |       completed in 2 phases:                              |
+                    |                                                           |
+                    |           Phase 1 -   Participant selects prob GPT is     |
+                    |                       correct                             |
+                    |           Phase 2 -   Participant makes their own         |
+                    |                       selection with the help of GPT      |
+                    ------------------------------------------------------------>
+                    <div class="row" id="instruction-task-likert-scale-container">
+                        <!-- Phase Completion by clicking on Submit -->
+                        <div class="col-12">
+                            <!-- Question Header - Probability GPT is correct? -->
+                            <div class="row" id="instruction-task-likert-scale-header-container">
+                                <div class="col-md-12 text-center mb-1">
+                                    <h5 id="instruction-task-likert-scale-header-text">
+                                        What is the probability that GPT's answer is correct?
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- Likert Scale -->
+                            <div class="row">
+                                <div class="col-12 text-center" id="instruction-task-likert-scale-radio-button-container">
+                                    <ul class='instruction-likert' id="instruction-task-likert-scale-radio-button-selection">
+                                        <li>
+                                            <label>25</label>
+                                            <input type="radio" name="instruction-likert" value="25">
+                                            <label>Guessing (Chance)</label>
+                                        </li>
+                                        <li>
+                                            <label>30</label>
+                                            <input type="radio" name="instruction-likert" value="30">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>35</label>
+                                            <input type="radio" name="instruction-likert" value="35">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>40</label>
+                                            <input type="radio" name="instruction-likert" value="40">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>45</label>
+                                            <input type="radio" name="instruction-likert" value="45">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>50</label>
+                                            <input type="radio" name="instruction-likert" value="50">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>55</label>
+                                            <input type="radio" name="instruction-likert" value="55">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>60</label>
+                                            <input type="radio" name="instruction-likert" value="60">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>65</label>
+                                            <input type="radio" name="instruction-likert" value="65">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>70</label>
+                                            <input type="radio" name="instruction-likert" value="70">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>75</label>
+                                            <input type="radio" name="instruction-likert" value="75">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>80</label>
+                                            <input type="radio" name="instruction-likert" value="80">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>85</label>
+                                            <input type="radio" name="instruction-likert" value="85">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>90</label>
+                                            <input type="radio" name="instruction-likert" value="90">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>95</label>
+                                            <input type="radio" name="instruction-likert" value="95">
+                                            
+                                        </li>
+                                        <li>
+                                            <label>100</label>
+                                            <input type="radio" name="instruction-likert" value="100">
+                                            <label>Absolutely Certain</label>
+                                        </li>
+                                        </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!--
-                    ******************
-                    *   Trial Content
-                    ******************
+                    **************************
+                    *   Submit/Proceed Button
+                    **************************
+        
+                    NOTE:
+                        A proceed button has been included, but you
+                        can (and should) modify this to your
+                        experiment tasks:
+        
+                            - Create multiple buttons if necessary
+                            - No button if you don't need it
+                            - Etc
                     -->
-                    <div class="row">
-                        <div class="col-12" id="trialMainContent">
-                            <!--
-                            ************************************
-                            *   Update the content in here to
-                            *   your satisfaction for the
-                            *   experiment you are conducting
-                            ************************************
-
-                            NOTE:
-                                You will need to add divs, spans, buttons, etc
-                                in here to create the task activity you want!
-
-                                This is left completely empty for you to fill
-                                in as you wish :)
-                            -->
-                            <div class="row" id="experiment-display-option-01">
-                                <div class="col-12" id="trial-answers-container">
-                                        
-                                    <div class="row">
-                                        <!--    Participant Task Container     -->
-                                        <div class="col-5" id="instruction-participant-task-container" style="display: grid">
-                                        <!--<div class="col-5" id="participant-task-container">-->
-                                            <div class="row justify-content-between">
-                                                <div class="col-12 text-center">
-                                                    <h4 style="margin-top: 0.5rem">
-                                                        Options
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="padding-bottom: 10px">
-                                            </div>
-                                            <!--    Trial Answers : Option A     -->
-                                            <div class="row justify-content-between">
-                                                <div class="col-12">
-                                                    <button id="participant-trial-option-A" name="patA" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption1(this)" disabled>
-                                                        <span class="float-left">
-                                                            <b>A</b> :
-                                                        </span>
-                                                        <span class="text-center" id="participant-trial-option-1">
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="padding-bottom: 10px">
-                                            </div>
-                                            <!--    Trial Answers : Option B     -->
-                                            <div class="row justify-content-between">
-                                                <div class="col-12">
-                                                    <button id="participant-trial-option-B" name="patB" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption2(this)" disabled>
-                                                        <span class="float-left">
-                                                            <b>B</b> :
-                                                        </span>
-                                                        <span class="text-center" id="participant-trial-option-2">
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="padding-bottom: 10px">
-                                            </div>
-                                            <!--    Trial Answers : Option C     -->
-                                            <div class="row justify-content-between">
-                                                <div class="col-12">
-                                                    <button id="participant-trial-option-C" name="patC" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption3(this)" disabled>
-                                                        <span class="float-left">
-                                                            <b>C</b> :
-                                                        </span>
-                                                        <span class="text-center" id="participant-trial-option-3">
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="padding-bottom: 10px">
-                                            </div>
-                                            <!--    Trial Answers : Option D     -->
-                                            <div class="row justify-content-between">
-                                                <div class="col-12">
-                                                    <button id="participant-trial-option-D" name="patD" type="submit" class="btn btn-dark participant-trial-option" onclick="trailOption4(this)" disabled> 
-                                                        <span class="float-left">
-                                                            <b>D</b> :
-                                                        </span>
-                                                        <span class="text-center" id="participant-trial-option-4">
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="padding-bottom: 10px">
-                                            </div>
-                                        </div>
-                                        <div class="col-7" id="instruction-ai-trial-answers-horizontal">
-                                            <div class="row">
-                                                <div class="col-12 text-center" id="instruction-chatGPT-explanation"> <!--</div>#ffd200-->
-                                                    <div class="row">
-                                                        <div class="col-12 text-center" id="intruction-chatGPT-header">
-                                                            <p style="margin-top: 0.5rem; margin-bottom: 0.5rem; text-align: left">
-                                                                Default (GPT-3.5)
-                                                            </p>
-                                                            <!--<p style="margin-top: 0.5rem; margin-bottom: 0.5rem; font-size: 18pt">
-                                                                GPT-3.5
-                                                            </p>-->
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-left" style="margin-top: 0.5rem">
-                                                        <div class="col-1 text-left">
-                                                            <img style="background-color: rgb(25, 195, 125); border-radius: 5px;" src="images/ChatGPT_logo_v2.svg" />
-                                                        </div>
-                                                        <div class="col-11 text-left">
-                                                            <p id="ai-trial-answers-explanation" style="text-align: left; padding-left: 10px">
-                                                                The response generated by chatGPT 3.5 will be rendered here.
-                                                            </p>
-                                                            <!--<h5 id="ai-trial-answers-explanation" style="text-align: left; padding-left: 10px">
-                                                                The response generated by chatGPT 3.5 will be rendered here.
-                                                            </h5>-->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container" id="ai-help-information" hidden>
-                                                <div class="row" style="padding-bottom: 10px">
-                                                </div>
-                                                <!--    AI Help : Option A     -->
-                                                <div class="row">
-                                                    <div class="col-12" id="ai-trial-option-1">
-                                                        <button id="ai-trial-option-A" name="aiA" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                            <span class="text-center" id="ai-trial-option-1">
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="padding-bottom: 10px">
-                                                </div>
-                                                <!--    AI Help : Option B     -->
-                                                <div class="row">
-                                                    <div class="col-12" id="ai-trial-option-2">
-                                                        <button id="ai-trial-option-B" name="aiB" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                            <span class="text-center" id="ai-trial-option-2">
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="padding-bottom: 10px">
-                                                </div>
-                                                <!--    AI Help : Option C     -->
-                                                <div class="row">
-                                                    <div class="col-12" id="ai-trial-option-3">
-                                                        <button id="ai-trial-option-C" name="aiC" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                            <span class="text-center" id="ai-trial-option-3">
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="padding-bottom: 10px">
-                                                </div>
-                                                <!--    AI Help : Option D     -->
-                                                <div class="row">
-                                                    <div class="col-12" id="ai-trial-option-4">
-                                                        <button id="ai-trial-option-D" name="aiD" type="submit" class="btn btn-light" style="width: 100%" disabled>
-                                                            <span class="text-center" id="ai-trial-option-4">
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="padding-bottom: 10px">
-                                                </div>
-                                                <!--    AI Help : Gradient     -->
-                                                <div class="container" id="ai-help-options-container-gradient" style="padding-left: 0px; padding-right: 0px">
-                                                    <div class="row">
-                                                        <div class="col-md-12 text-center mb-1">
-                                
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-sm-12 col-xs-12 text-center" id="ai-help-gradient-span" style="padding-top: 5px; padding-bottom: 5px">
-                                                            <div style="width: 100%;">
-                                                                <span style="float: left">
-                                                                    Low
-                                                                </span>
-                                                                <span style="float: right">
-                                                                    High
-                                                                </span>
-                                                                <span>
-                                                                    <h4>AI Confidence</h4>
-                                                                </span>
-                                
-                                                            </div>
-                                                            <div id="ai-confidence-gradient" style="width: 100%; height: 30px; border-style: solid; border-color: #000000; border-radius: 5px">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12" id="instruction-participant-response-area">
-                                    <!--    Trial Answers : Confidence     -->
-                                    <div class="row" id="instruction-participant-likert-scale-container">
-                                        <div class="col-md-12 text-center mb-1">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center mb-1">
-                                                    <h4 id="instruction-participant-likert-scale-header">
-                                                        Estimated Confidence of GPT's Answer
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12 col-md-12 col-sm-12 col-xs-12 text-center" id="instruction-likert-button-container" style="padding-top: 5px; padding-bottom: 5px">
-                                                    <ul class='likert' id="instruction-participant-likert-options-selection">
-                                                        <li>
-                                                            <input type="radio" name="likert" value="0">
-                                                            <label>0</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="10">
-                                                            <label>10</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="20">
-                                                            <label>20</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="30">
-                                                            <label>30</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="40">
-                                                            <label>40</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="50">
-                                                            <label>50</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="60">
-                                                            <label>60</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="70">
-                                                            <label>70</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="80">
-                                                            <label>80</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="90">
-                                                            <label>90</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="radio" name="likert" value="100">
-                                                            <label>100</label>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--
-                                    **************************
-                                    *   Submit/Proceed Button
-                                    **************************
-
-                                    NOTE:
-                                        A proceed button has been included, but you
-                                        can (and should) modify this to your
-                                        experiment tasks:
-
-                                            - Create multiple buttons if necessary
-                                            - No button if you don't need it
-                                            - Etc
-                                    -->
-                                    <div class="row" id="instruction-participant-task-options-container-submit">
-                                        <div class="col-12 right-button">
-                                            <button class="btn btn-primary" id="instruction-proceedMainexperiment" onclick="nextTask(this)" disabled>
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row" id="instruction-task-submit-button-container">
+                        <div class="col-12 right-button">
+                            <button class="btn btn-primary" id="instruction-proceedMainexperiment" disabled>
+                                Submit
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Pagination Buttons - Instruction Navigation -->
             <div class="row" id="instruction-navigator">
                 <div class="col-2 my-2">
                     <button id="previous-button" name="previous" type="submit" class="btn btn-secondary" onclick="previousInstructionButton(this)" style="width: 100%">
@@ -444,6 +467,7 @@ file appropriately!
                     </button>
                 </div>
             </div>
+            <!-- DEBUG - Skip Instructions in debug mode only -->
             <div class="row" id="debug-mode-skip-instructions">
                 <div class="col-md-12" align="center" style="margin-bottom: 10px">
                     <input class="btn btn-primary btn-sm" type="submit" name="submit" id="submit" value="Skip Instructions" onclick="skipInstructions(this)">

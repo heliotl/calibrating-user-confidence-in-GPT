@@ -22,11 +22,11 @@ This file should contain static experimental metadata such as:
 ******************************************************************************/
 
 // BE SURE TO TURN THIS TO FALSE WHENEVER YOU GO LIVE WITH YOUR EXPERIMENT!!!
-var DEBUG_INSTRUCTIONS          = true;
+var DEBUG_INSTRUCTIONS          = DEBUG;
 
 // Instruction Metadata
 var CURRENT_INSTRUCTION_PAGE    = 1;
-var TOTAL_INSTRUCTION_PAGES     = 10;
+var TOTAL_INSTRUCTION_PAGES     = 12;
 var PREVIOUS_BUTTON_DISABLED    = true;
 var NEXT_BUTTON_PROCEED         = false;
 
@@ -64,22 +64,71 @@ a percentage probability for each category for each image
 
 we can use this as a ECE graph for humans
 */
+function lowerOpacity() {
+    /*
+        Lower the opacity of all elements in the experiment example
+        conatainer.
+    */
+    //  Topic Header
+    $('#instruction-task-question-container-topic').css("opacity", 0.25);
+    //  Question
+    $('#instruction-trial-task-container').css("opacity", 0.25);
+    //  Options
+    $('#instruction-task-options-container').css("opacity", 0.25);
+    //  GPT
+    $('#instruction-task-gpt-container').css("opacity", 0.25);
+    //  Likert
+    $('#instruction-task-likert-scale-container').css("opacity", 0.25);
+    //  Submit
+    $('#instruction-task-submit-button-container').css("opacity", 0.25);
+}
+
+function restoreOpacity(elementID) {
+    /*
+        Restore the opacity of a given element.
+    */
+    $(elementID).css("opacity", 1);
+}
+
+function restoreAllOpacity() {
+    /*
+        Restore the opacity of all elements.
+    */
+    restoreOpacity("#instruction-task-question-container-topic");
+    restoreOpacity("#instruction-trial-task-container");
+    restoreOpacity("#instruction-task-options-container");
+    restoreOpacity("#instruction-task-gpt-container");
+    restoreOpacity("#instruction-task-likert-scale-container");
+    restoreOpacity("#instruction-task-submit-button-container");
+}
+
+function highlightTopicHeader(highlight) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-task-question-container-topic').css({
+            "background-color": "#f7eb5f",
+            "border": "2px solid #f7eb5f",
+            "color": "black"
+        });
+    } else {
+        $('#instruction-task-question-container-topic').css({
+            "background-color": "#0064a4",
+            "border": "2px solid #0064a4",
+            "color": "white"
+        });
+    }
+}
 
 function determineActionForInstructionPage() {
     if (CURRENT_INSTRUCTION_PAGE == 3){
-        $("#instruction-trial-task").css({"background-color": "yellow"});
-        $("#instruction-participant-task-container").css({"opacity": 0.25});
-        $("#instruction-chatGPT-explanation").css({"opacity": 0.25});
-        $("#instruction-participant-response-area").css({"opacity": 0.25});
-        //$("#instruction-likert-button-container").css({"opacity": 0.25});
-        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+        lowerOpacity();
+        restoreOpacity("#instruction-task-question-container-topic");
+        highlightTopicHeader(true);
     } else if (CURRENT_INSTRUCTION_PAGE == 4){
-        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
-        $("#instruction-participant-task-container").css({"background-color": "yellow", "opacity": 1});
-        $("#instruction-chatGPT-explanation").css({"opacity": 0.25});
-        $("#instruction-participant-response-area").css({"opacity": 0.25});
-        //$("#instruction-likert-button-container").css({"opacity": 0.25});
-        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+        lowerOpacity();
+        restoreOpacity("#instruction-trial-task-container");
     } else if (CURRENT_INSTRUCTION_PAGE == 5){
         $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
         $("#instruction-participant-task-container").css({"background-color": "", "opacity": 0.25});
