@@ -379,6 +379,8 @@ function previousInstructionButton() {
         $("#next-button").text("Next");
         $("#next-button").attr("class", "btn btn-secondary");
     }
+
+    determineActionForInstructionPage();
     
     // For DEBUG purposes
     console.log( 'Instruction Number' + CURRENT_INSTRUCTION_PAGE );

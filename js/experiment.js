@@ -139,10 +139,6 @@ var debugQuestions = [
 var trialList = [
     debugQuestions[0],
     debugQuestions[1],
-    debugQuestions[0],
-    debugQuestions[1],
-    debugQuestions[0],
-    debugQuestions[1],
 ];
 
 /******************************************************************************
@@ -382,8 +378,25 @@ function nextTask() {
     // Show new task number
     $('#trialCounter').text(CURRENT_TASK);
 
-    // Display the next trial
-    presentTrial( CURRENT_TASK - 1);
+    if (CURRENT_TASK <= TOTAL_TRIALS) {
+        // Display the next trial
+        presentTrial( CURRENT_TASK - 1);
+    }
+};
+
+function allTasksDone() {
+    /*
+        All experiment trials are done.
+
+        This will submit the final rankings and then load the
+        "Survey" page.
+    */
+    // Hide Experiment
+    $("#task-header").attr("hidden", true);
+    $("#task-main-content").attr("hidden", true);
+    // Show Survey
+    $("#exp-survey-header").attr("hidden", false);
+    $("#survey-main-content").attr("hidden", false);
 };
 
 function proceed() {
@@ -415,6 +428,10 @@ function proceed() {
    
     if (SUBMIT_OWN_CLASSIFICATION) {
         nextTask();
+        if (CURRENT_TASK > TOTAL_TRIALS){
+            console.log("All trials done");
+            allTasksDone();
+        }
     } else {
         nextPhase();
     }
@@ -428,8 +445,15 @@ function proceed() {
         render the consent.html page appropriately.
 ******************************************************************************/
 $(document).ready(function (){
+    //  Remove Task Header for Experiment Page
+    $('#task-header').html('');
+
+    if (DEBUG_EXPERIMENT_CONCURRENT){
+        TOTAL_TRIALS = 2;
+    }
+
     //  Task Information
-    $('#trialCounter').text(CURRENT_TASK);
+    $('#trialCounter').text(CURRENT_TASK.toString().padStart(2, '0'));
     $('#trialCounter-total').text(TOTAL_TRIALS);
 
     //  Present the first image
