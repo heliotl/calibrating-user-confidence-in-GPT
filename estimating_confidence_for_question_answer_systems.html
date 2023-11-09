@@ -77,8 +77,9 @@
                 $('#consent-main-content').load("html/consent.html");
                 $('#instructions-main-content').load("html/instructions.html");
                 $('#comprehension-quiz-main-content').load('html/comprehension-quiz.html');
-                $('#task-main-content').load('html/experiment_opt01.html');
-                //$('#task-main-content').load('html/experiment_opt02.html');
+                $('#task-main-content').load('html/experiment_concurrent.html');
+                $('#survey-main-content').load('html/survey.html');
+                $('#task-complete').load('html/complete.html');
             });
         </script>
 
@@ -128,33 +129,27 @@
                     <!--
                         Consent Page
                     -->
-                    <h1 class="page-title-header" id="consent-header" hidden="true">
+                    <h2 class="page-title-header" id="consent-header">
                         Consent Page
-                    </h1>
+                    </h2>
                     <!--
                         Instructions
                     -->
-                    <h1 class="page-title-header" id="instructions-header" hidden="true">
+                    <h2 class="page-title-header" id="instructions-header" hidden="true">
                         Instructions
-                    </h1>
+                    </h2>
                     <!--
                         Comprehension
                     -->
-                    <h1 class="page-title-header" id="comprehension-quiz-header" hidden="true">
+                    <h2 class="page-title-header" id="comprehension-quiz-header"  hidden="true">
                         Comprehension Quiz
-                    </h1>
-                    <!--
-                        Task Page
-                    -- >
-                    <h1 class="page-title-header" id="task-header">
-                        Task
-                    </h1>
+                    </h2>
                     <!--
                     **********************
                     *   Trial Information
                     **********************
                     -->
-                    <h2 class="page-title-header" id="task-header">
+                    <h2 class="page-title-header" id="task-header" hidden="true">
                         Question
                         <!-- 
                             Update the value X using JS (update trial by trial)
@@ -181,11 +176,17 @@
                         </span>
                     </h2>
                     <!--
+                        Experiment Survey Page
+                    -->
+                    <h2 class="page-title-header" id="exp-survey-header" hidden="true">
+                        Survey
+                    </h2>
+                    <!--
                         Experiment Completed Page
                     -->
-                    <h1 class="page-title-header" id="exp-complete-header" hidden="true">
-                        Task Complete
-                    </h1>
+                    <h2 class="page-title-header" id="exp-complete-header" hidden="true">
+                        Experiment Complete
+                    </h2>
                 </div>
                 <!---------------------------------------------------------------------------------------------------->
                 <!---------------------------------------------------------------------------------------------------->
@@ -196,7 +197,7 @@
                 <!---------------------------------------------------------------------------------------------------->
                 <div class="row page-content justify-content-center">
                     <!-- CONSENT PAGE -->
-                    <div class="row" id="consent-main-content"hidden="true">
+                    <div class="row" id="consent-main-content">
                         
                     </div>
                     <!-- INSTRUCTIONS -->
@@ -208,7 +209,15 @@
                         
                     </div>
                     <!-- EXPERIMENT -->
-                    <div class="row" id="task-main-content" style="width: 100%">
+                    <div class="row" id="task-main-content" style="width: 100%" hidden="true">
+                        
+                    </div>
+                    <!-- EXPERIMENT SURVEY -->
+                    <div class="row" id="survey-main-content" style="width: 100%" hidden="true">
+                        
+                    </div>
+                    <!-- TASK COMPLETE -->
+                    <div class="row" id="task-complete" style="width: 100%" hidden="true">
                         
                     </div>
                 </div>
@@ -216,7 +225,7 @@
         </main>
 
         <!-- PAGE FOOTER -->
-        <footer class="page-footer fixed-bottom" style="background-color: #0064a4; text-align: center; color: #ffffff;">
+        <footer class="page-footer fixed-bottom" style="background-color: #0064a4; text-align: center; color: #ffffff;" hidden>
             <!--
                 NOTE TO SELF - THIS CAN BE DELETED TO MAKE THE FOOTER A LITTLE SMALLER
                 <div class="container">
