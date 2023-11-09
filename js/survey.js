@@ -18,7 +18,7 @@ to conduct the post-experiment survey.
         All metadata variables that are relevant to the survey page.
 ******************************************************************************/
 //      Turn ON/OFF Debug Mode
-var DEBUG_SURVEY                    = true;
+var DEBUG_SURVEY                    = DEBUG;
 
 //      Survey Information
 var TOPIC_ABILITY_DICT = {
@@ -32,8 +32,8 @@ var TOPIC_ABILITY_DICT = {
     "Philosophy"                    : null,
     "Professional Psychology"       : null,
     "Public Relations"              : null
-}
-var TOPICS_RANKED                   = 0
+};
+var TOPICS_RANKED                   = 0;
 
 
 /******************************************************************************

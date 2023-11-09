@@ -18,7 +18,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 
 /**************************************
 *   Row 1                             *
-*   Survey Question                    *
+*   Survey Question                   *
 **************************************/
 #survey-question-container {
     padding-bottom: 0.5rem;
@@ -138,13 +138,85 @@ Everything is in order as it appears in the HTML file (top to bottom).
     background-color: #5e4fa2;
 }
 /*  Input Radio Button Styling  */
-input[type=radio] {
-  position:relative;
-  display: block;
-  margin: auto;
-  z-index: 1;
-  width: 100%;
-  height: 1.5em
+input[name="Anatomy"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="Global Facts"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="High School Chemistry"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="High School Macroeconomics"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="High School Physics"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="High School World History"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="Machine Learning"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="Phyilosophy"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="Professional Psychology"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
+}
+input[name="Public Relations"] {
+    position:relative;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 1.5em
 }
 
 
