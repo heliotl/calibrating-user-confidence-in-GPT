@@ -151,7 +151,7 @@ var trialList = [
         All metadata variables that are relevant to the consent page.
 ******************************************************************************/
 //      Turn ON/OFF Debug Mode
-DEBUG_EXPERIMENT_CONCURRENT     = true;
+var DEBUG_EXPERIMENT_CONCURRENT     = DEBUG;
 
 //      Task Information
 var CURRENT_TASK               = 1;
@@ -182,7 +182,7 @@ function presentTrial( trial ) {
     // Update the trial counter
     $('#task-img-counter-display').text( (trial+1) + ' ' );
 
-    // Update the Question Topic
+    // Update the Question TopicList[trial]
     $('#task-question-container-topic-name').text(trialList[trial].Topic);
 
     //  Update Question
@@ -359,7 +359,7 @@ function nextTask() {
     // Make the Opacity of the task-likert-scale-container 1
     $('#task-likert-scale-container').css('opacity', 1);
     // Enable radio button
-    $('input[type=radio').attr('disabled', false);
+    $('input[type=radio]').attr('disabled', false);
 
     //  Disable the Submit button
     $('#proceedMainexperiment').prop('disabled', true);
@@ -419,23 +419,6 @@ function proceed() {
         nextPhase();
     }
 };
-
-/*
-0 - very easy
-
-100 - extremely difficult
-
-
-
-end of study create bucket bins for participants to put difficulty of topics
-
-multiple topics can go in same bin
-
-
-
-no comprehension quiz!
-
-*/
 
 
 /******************************************************************************

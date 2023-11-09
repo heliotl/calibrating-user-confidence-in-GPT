@@ -195,7 +195,8 @@ Everything is in order as it appears in the HTML file (top to bottom).
     list-style:none;
     width:100%;
     margin:0;
-    padding:0 0 35px;
+    padding: 0 0 35px;
+    margin-bottom: 15px;
     display:block;
 }
 .likert:last-of-type {
@@ -221,7 +222,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
     width:100%;
     font-size: 1.25em;
 }
-input[type=radio] {
+input[name="likert"] {
   position:relative;
   display: block;
   margin: auto;
