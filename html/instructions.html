@@ -71,14 +71,15 @@ file appropriately!
                     </h4>
                     <h4 class="instruction-text-line-02">
                         There are a total of 10 topics:
-                        <br />
+                    </h4>
+                    <h5 class="instruction-text-line-02">
                         <i>
                             Anatomy, Global Gacts, High School Chemistry,
                             High School Macroeconomics, High School Physics,
                             High School World History, Machine Learning, Philosophy,
                             Professional Psychology, Public Relations
                         </i>
-                    </h4>
+                    </h5>
                 </div>
                 <div class="col-12" id="instruction-page-04" hidden="true">
                     <h4 class="instruction-text-line-01">
@@ -144,6 +145,9 @@ file appropriately!
                         Once you submit your estimate of <i>ChatGPT</i>'s accuracy, you will then be tasked
                         with answering the same question yourself.
                     </h4>
+                    <h5 class="instruction-text-line-03">
+                        You must click <i>Submit</i> button before you can proceed.
+                    </h5>
                 </div>
                 <div class="col-12" id="instruction-page-10" hidden="true">
                     <h4 class="instruction-text-line-01">
@@ -170,11 +174,11 @@ file appropriately!
                                 Option B
                             </span>
                         </button>
-                        to select your answer, the click on
+                        to select your answer, then click on
                         <button class="btn btn-primary">
                             Submit
                         </button>
-                        to submit and proceed to the next question.
+                        to submit your answer and proceed to the next question.
                     </h4>
                     <h5 class="instruction-text-line-03">
                         Click on <i>Option B</i> to proceed to the next instruction.
@@ -196,7 +200,7 @@ file appropriately!
                 </div>
             </div>
             <!-- Experiment Container -->
-            <div class="row" id="instruction-example-task-container">
+            <div class="row" id="instruction-example-task-container" hidden="true">
                 <div class="col-12 trialbox justify-content-center" id="instruction-mainexperiment-container">
                     <!--------------------------------------------
                     |   Row 1 - Trial Question                   |
@@ -330,7 +334,7 @@ file appropriately!
                     ------------------------------------------------------------>
                     <div class="row" id="instruction-task-likert-scale-container">
                         <!-- Phase Completion by clicking on Submit -->
-                        <div class="col-12">
+                        <div class="col-12" id="instruction-task-likert-scale-subcontainer">
                             <!-- Question Header - Probability GPT is correct? -->
                             <div class="row" id="instruction-task-likert-scale-header-container">
                                 <div class="col-md-12 text-center mb-1">
@@ -343,7 +347,7 @@ file appropriately!
                             <div class="row">
                                 <div class="col-12 text-center" id="instruction-task-likert-scale-radio-button-container">
                                     <ul class='instruction-likert' id="instruction-task-likert-scale-radio-button-selection">
-                                        <li>
+                                        <li id="instruction-likert-button-25">
                                             <label>25</label>
                                             <input type="radio" name="instruction-likert" value="25">
                                             <label>Guessing (Chance)</label>
@@ -368,7 +372,7 @@ file appropriately!
                                             <input type="radio" name="instruction-likert" value="45">
                                             
                                         </li>
-                                        <li>
+                                        <li id="instruction-likert-button-50">
                                             <label>50</label>
                                             <input type="radio" name="instruction-likert" value="50">
                                             

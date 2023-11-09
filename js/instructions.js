@@ -121,47 +121,212 @@ function highlightTopicHeader(highlight) {
     }
 }
 
+function highlightQuestion(highlight) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-trial-task-container').css({
+            "background-color": "#f7eb5f",
+            "border-radius": "5px",
+        });
+    } else {
+        $('#instruction-trial-task-container').css({
+            "background-color": "",
+            "border-radius": "",
+        });
+    }
+}
+
+function highlightGPTExplanation(highlight) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-task-gpt-container').css({
+            "background-color": "#f7eb5f",
+            "color": "black"
+        });
+        $('#instruction-task-gpt-header-container').css({
+            "background-color": "#f7eb5f",
+            "color": "black"
+        });
+    } else {
+        $('#instruction-task-gpt-container').css({
+            "background-color": "",
+        });
+        $('#instruction-task-gpt-header-container').css({
+            "background-color": "",
+            "color": ""
+        });
+    }
+}
+
+function highlightLikertScale(highlight) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-task-likert-scale-subcontainer').css({
+            "background-color": "#f7eb5f",
+            "border-radius": "5px"
+        });
+    } else {
+        $('#instruction-task-likert-scale-subcontainer').css({
+            "background-color": "",
+            "border-radius": ""
+        });
+    }
+}
+
+function highlightLikertScaleButton(highlight, n) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-likert-button-' + n).css({
+            "background-color": "#f7eb5f",
+            "border-radius": "5px"
+        });
+    } else {
+        $('#instruction-likert-button-' + n).css({
+            "background-color": "",
+            "border-radius": ""
+        });
+    }
+}
+
+function highlightSubmitButton(highlight) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-proceedMainexperiment').css({
+            "background-color": "#f7eb5f",
+            "color": "black"
+        });
+        $('#instruction-proceedMainexperiment').prop("disabled", false);
+    } else {
+        $('#instruction-proceedMainexperiment').css({
+            "background-color": "",
+            "color": ""
+        });
+        $('#instruction-proceedMainexperiment').prop("disabled", true);
+    }
+}
+
+function highlightOptions(highlight) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-task-options-container').css({
+            "background-color": "#f7eb5f",
+            "border-radius": "5px",
+            "color": "black"
+        });
+    } else {
+        $('#instruction-task-options-container').css({
+            "background-color": "",
+            "border-radius": "",
+            "color": ""
+        });
+    }
+}
+
+function highlightOptionsButton(highlight, b) {
+    /*
+        Turn on/off highlighting of the topic header.
+    */
+    if (highlight) {
+        $('#instruction-participant-trial-option-' + b).css({
+            "background-color": "#f7eb5f",
+            "color": "black"
+        });
+        $('#instruction-participant-trial-option-' + b).prop("disabled", false);
+    } else {
+        $('#instruction-participant-trial-option-' + b).css({
+            "background-color": "",
+            "color": ""
+        });
+        $('#instruction-participant-trial-option-' + b).prop("disabled", true);
+    }
+}
+
 function determineActionForInstructionPage() {
-    if (CURRENT_INSTRUCTION_PAGE == 3){
+    if (CURRENT_INSTRUCTION_PAGE == 2){
+        $('#instruction-example-task-container').attr("hidden", false);
+    } else if (CURRENT_INSTRUCTION_PAGE == 3){
         lowerOpacity();
         restoreOpacity("#instruction-task-question-container-topic");
         highlightTopicHeader(true);
     } else if (CURRENT_INSTRUCTION_PAGE == 4){
         lowerOpacity();
         restoreOpacity("#instruction-trial-task-container");
+        highlightTopicHeader(false);
+        highlightQuestion(true);
     } else if (CURRENT_INSTRUCTION_PAGE == 5){
-        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
-        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 0.25});
-        $("#instruction-chatGPT-explanation").css({"background-color": "yellow", "opacity": 1, "color": "black"});
-        $("#intruction-chatGPT-header").css({"background-color": "yellow", "opacity": 1, "color": "black"});
-        $("#instruction-participant-response-area").css({"opacity": 0.25});
-        //$("#instruction-likert-button-container").css({"opacity": 0.25});
-        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+        lowerOpacity();
+        restoreOpacity("#instruction-task-gpt-container");
+        highlightQuestion(false);
+        highlightGPTExplanation(true);
     } else if (CURRENT_INSTRUCTION_PAGE == 6){
-        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
-        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 0.25});
-        $("#instruction-chatGPT-explanation").css({"background-color": "", "opacity": 0.25, "color": "white"});
-        $("#intruction-chatGPT-header").css({"background-color": "", "opacity": 0.25, "color": "white"});
-        $("#instruction-participant-response-area").css({"background-color": "yellow", "opacity": 1});
-        //$("#instruction-likert-button-container").css({"background-color": "yellow", "opacity": 0.25});
-        //$("#instruction-proceedMainexperiment").css({"opacity": 0.25});
+        lowerOpacity();
+        restoreOpacity("#instruction-task-likert-scale-container");
+        highlightGPTExplanation(false);
+        highlightLikertScale(true);
     } else if (CURRENT_INSTRUCTION_PAGE == 7){
-        $("#instruction-trial-task").css({"background-color": "", "opacity": 0.25});
-        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 0.25});
-        $("#instruction-chatGPT-explanation").css({"background-color": "", "opacity": 0.25, "color": "white"});
-        $("#intruction-chatGPT-header").css({"background-color": "", "opacity": 0.25, "color": "white"});
-        $("#instruction-participant-response-area").css({"background-color": "", "opacity": 1});
-        //$("#instruction-likert-button-container").css({"background-color": "yellow", "opacity": 0.25});
-        $("#instruction-proceedMainexperiment").css({"background-color": "yellow", "opacity": 1, "color": "black"});
-    } else if (CURRENT_INSTRUCTION_PAGE >= 8){
-        // Reset everything back to normal
-        $("#instruction-trial-task").css({"background-color": "", "opacity": 1});
-        $("#instruction-participant-task-container").css({"background-color": "", "opacity": 1});
-        $("#instruction-chatGPT-explanation").css({"background-color": "", "opacity": 1, "color": "white"});
-        $("#intruction-chatGPT-header").css({"background-color": "", "opacity": 1, "color": "white"});
-        $("#instruction-participant-response-area").css({"background-color": "", "opacity": 1});
-        //$("#instruction-likert-button-container").css({"background-color": "yellow", "opacity": 0.25});
-        $("#instruction-proceedMainexperiment").css({"background-color": "", "opacity": 1, "color": ""});
+        lowerOpacity();
+        restoreOpacity("#instruction-task-likert-scale-container");
+        $('#next-button').prop("disabled", true);
+        $('input[value="25"]').click(function(){
+            $('#next-button').prop("disabled", false);
+        });
+        highlightLikertScale(false);
+        highlightLikertScaleButton(true, "25");
+    } else if (CURRENT_INSTRUCTION_PAGE == 8){
+        lowerOpacity();
+        restoreOpacity("#instruction-task-likert-scale-container");
+        $('#next-button').prop("disabled", true);
+        $('input[value="50"]').click(function(){
+            $('#next-button').prop("disabled", false);
+        });
+        highlightLikertScaleButton(false, "25");
+        highlightLikertScaleButton(true, "50");
+    } else if (CURRENT_INSTRUCTION_PAGE == 9){
+        lowerOpacity();
+        restoreOpacity("#instruction-task-submit-button-container");
+        $('#next-button').prop("disabled", true);
+        $('#instruction-proceedMainexperiment').click(function(){
+            $('#next-button').prop("disabled", false);
+        });
+        highlightLikertScaleButton(false, "50");
+        highlightSubmitButton(true);
+    } else if (CURRENT_INSTRUCTION_PAGE == 10){
+        lowerOpacity();
+        restoreOpacity("#instruction-task-options-container");
+        highlightSubmitButton(false);
+        highlightOptions(true);
+    } else if (CURRENT_INSTRUCTION_PAGE == 11){
+        lowerOpacity();
+        restoreOpacity("#instruction-task-options-container");
+        restoreOpacity("#instruction-task-submit-button-container");
+        $('#next-button').prop("disabled", true);
+        $('#instruction-proceedMainexperiment').prop("disabled", true);
+        $('#instruction-participant-trial-option-B').click(function(){
+            highlightSubmitButton(true);
+            $('#instruction-proceedMainexperiment').prop("disabled", false);
+        });
+        $('#instruction-proceedMainexperiment').click(function(){
+            $('#next-button').prop("disabled", false);
+        });
+        highlightOptions(false);
+        highlightOptionsButton(true, "B");
+    } else if (CURRENT_INSTRUCTION_PAGE == 12){
+        restoreAllOpacity();
+        highlightOptionsButton(false, "B");
+        highlightSubmitButton(false);
+        $('#instruction-example-task-container').attr("hidden", true);
     }
 };
 
@@ -233,6 +398,8 @@ function nextInstructionButton() {
             whenever the participant has reached the last instruction
             page.
     */
+    //  Reset input radio buttons
+    $('input:checked').prop('checked', false);
 
     // Increment current instruction page
     CURRENT_INSTRUCTION_PAGE++;
@@ -367,6 +534,4 @@ $(document).ready(function (){
 
     // Determine if we are in DEBUG mode
     debugInstructions();
-
-
 });
