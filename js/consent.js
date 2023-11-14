@@ -186,7 +186,10 @@ $(document).ready(function (){
             CONSENT_DATA['consented'] = false;
             CONSENT_DATA['consentTime'] = null;
         }
-        console.log(CONSENT_DATA);
+
+        if (DEBUG){
+            console.log(CONSENT_DATA);
+        }
     };
 
     function submitConsent() {
@@ -240,8 +243,11 @@ $(document).ready(function (){
         "mailto:" + LEAD_RESEARCHER_EMAIL + "?Subject=Noisy%20Image%20Classification"
     );
 
-    console.log("TESTING");
-    console.log("Firebase UserID:", firebaseUserId);
+    if (DEBUG){
+        console.log("TESTING");
+        console.log("Firebase UserID:", firebaseUserId);
+    }
+    /*  WRITE TO FIREBASE */
     // Save URL parameters on the path: "[studyId]/participantData/[firebaseUserId]/participantInfo"
     let pathnow = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/participantInfo';
     writeURLParameters( pathnow );
