@@ -22,7 +22,8 @@ var DEBUG = true;
 
 //      Experiment Name
 //var EXPERIMENT_NAME             = "Calibrating User Confidence in GPT";
-var EXPERIMENT_NAME             = "Estimating Confidence : Question Answer Systems";
+var EXPERIMENT_NAME             = "Working with ChatGPT"; //"Estimating Confidence : Question Answer Systems";
+var EXPERIMENT_DATABASE_NAME    = "working-with-chatgpt-concurrent";
 
 //      Section Headers
 var SECTION_TITLE_CONSENT_PAGE  = "Consent Page";

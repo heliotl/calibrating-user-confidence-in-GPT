@@ -16,6 +16,15 @@ This file should contain static experimental metadata such as:
 */
 
 /******************************************************************************
+    IMPORTS
+
+        Import all FirebaseJS functionality.
+******************************************************************************/
+/// Importing functions and variables from the Firebase Psych library
+import { writeRealtimeDatabase,writeURLParameters,readRealtimeDatabase,
+    blockRandomization,finalizeBlockRandomization,firebaseUserId } from "./firebasepsych1.0.js";
+
+/******************************************************************************
     METADATA
 
         All metadata variables that are relevant to the consent page.
@@ -128,60 +137,76 @@ var LEAD_RESEARCHER_EMAIL   = "aakritk@uci.edu";
 
 
 /******************************************************************************
-    FUNCTIONALITY
-
-        All functions that will be used for the consent page.
-******************************************************************************/
-function disableSubmit() {
-    /*
-        Disable the submit button.
-
-        Submit button should be disabled by default and only enabled once
-        a participant has consented to the study.
-    */
-    if (!document.getElementById("terms").checked) {
-        $("#submit").disabled = true;
-    }
-};
-
-function activateButton(element) {
-    /*
-        Activate the submit button.
-
-        Activates and deactivates the submit button based on a user checking
-        or unchecking the consent box.
-    */
-    if (element.checked) {
-        document.getElementById("submit").disabled = false;
-    }
-    else {
-        document.getElementById("submit").disabled = true;
-    }
-};
-
-function submitConsent() {
-    /*
-        Consent has been submitted and we can move onto the next page.
-
-        Hide all consent page content and activate (show) instruction
-        page content.
-    */
-    // Hide Consent
-    $("#consent-header").attr("hidden", true);
-    $("#consent-main-content").attr("hidden", true);
-    // Show Instructions
-    $("#instructions-header").attr("hidden", false);
-    $("#instructions-main-content").attr("hidden", false);
-};
-
-
-/******************************************************************************
     RUN ON PAGE LOAD
 
         Run the following functions as soon as the page is loaded. This will
         render the consent.html page appropriately.
 ******************************************************************************/
 $(document).ready(function (){
+    /*
+    CONSENT DATA
+    */
+    let CONSENT_DATA = {
+        'consented': null,
+        'consentTime': null,
+    };
+
+
+    /******************************************************************************
+        FUNCTIONALITY
+
+            All functions that will be used for the consent page.
+    ******************************************************************************/
+    function disableSubmit() {
+        /*
+            Disable the submit button.
+
+            Submit button should be disabled by default and only enabled once
+            a participant has consented to the study.
+        */
+        if (!document.getElementById("terms").checked) {
+            $("#submit-consent").disabled = true;
+        }
+    };
+
+    function activateButton() {
+        /*
+            Activate the submit button.
+
+            Activates and deactivates the submit button based on a user checking
+            or unchecking the consent box.
+        */
+        if (this.checked) {
+            document.getElementById("submit-consent").disabled = false;
+            CONSENT_DATA['consented'] = true;
+            CONSENT_DATA['consentTime'] = Date().toString();
+        }
+        else {
+            document.getElementById("submit-consent").disabled = true;
+            CONSENT_DATA['consented'] = false;
+            CONSENT_DATA['consentTime'] = null;
+        }
+        console.log(CONSENT_DATA);
+    };
+
+    function submitConsent() {
+        /*
+            Consent has been submitted and we can move onto the next page.
+
+            Hide all consent page content and activate (show) instruction
+            page content.
+        */
+        // Hide Consent
+        $("#consent-header").attr("hidden", true);
+        $("#consent-main-content").attr("hidden", true);
+        // Show Instructions
+        $("#instructions-header").attr("hidden", false);
+        $("#instructions-main-content").attr("hidden", false);
+
+        // Write to Database
+        let path = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/consentData'
+        writeRealtimeDatabase(path, CONSENT_DATA);
+    };
     /*
         Insert METADATA into page appropriately :)
     */
@@ -214,4 +239,13 @@ $(document).ready(function (){
         "href",
         "mailto:" + LEAD_RESEARCHER_EMAIL + "?Subject=Noisy%20Image%20Classification"
     );
+
+    console.log("TESTING");
+    console.log("Firebase UserID:", firebaseUserId);
+    // Save URL parameters on the path: "[studyId]/participantData/[firebaseUserId]/participantInfo"
+    let pathnow = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/participantInfo';
+    writeURLParameters( pathnow );
+
+    $('#terms').click(activateButton);
+    $('#submit-consent').click(submitConsent);
 });

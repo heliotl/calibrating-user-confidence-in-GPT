@@ -21,7 +21,11 @@ metadata necessary. This information includes:
 -->
 <html>
     <head>
-
+        <!--
+            Custom JavaScript - Consent Page Metadata and Functionality
+        -->
+        <script src="js/consent.js" type="module">
+        </script>
     </head>
     <body>
         <div class="col-12 trialbox">
@@ -173,7 +177,7 @@ metadata necessary. This information includes:
                     <div class="row">
                         <div style="border: 2px solid #0064a4; background-color: rgba(0,0,0,0.02); padding: 10px; margin:0 auto;">
                             <p align="left">
-                                <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)" value="True">  <b>Check here</b> to confirm that:
+                                <input type="checkbox" name="terms" id="terms" value="True">  <b>Check here</b> to confirm that:
                                 you have read and understood the <i>Participant Information Sheet</i>,
                                 you are taking part in this research study voluntarily,
                                 you meet the eligility requirements,
@@ -184,17 +188,12 @@ metadata necessary. This information includes:
                     <br />
                     <div class="row">
                         <div class="col-md-12" align="center" style="margin-bottom: 10px">
-                            <input class="btn btn-primary btn-sm" type="submit" name="submit" id="submit" value="Submit and Proceed" onclick="submitConsent(this)" disabled>
+                            <input class="btn btn-primary btn-sm" type="submit" name="submit" id="submit-consent" value="Submit and Proceed" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
             </div>
         </div>
-        <!--
-            Custom JavaScript - Consent Page Metadata and Functionality
-        -->
-        <script src="js/consent.js">
-        </script>
     </body>
 </html>
