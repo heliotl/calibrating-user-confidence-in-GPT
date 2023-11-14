@@ -15,6 +15,27 @@ This file should contain static experimental metadata such as:
     -
 */
 
+/*
+    NOTES
+
+    Talk about questions that some can be hard
+    We don't care that you answer all questions correctly
+    Your performance isn't important we just want you to do your best
+    You don't need to know about these topics
+
+    suppose given 100 questions along the lines of what you have seen
+    these kinds of questions
+
+    fix survey:
+
+        drop sentence 1
+
+        If asked 100 similar types of questions from each topic, how well do you think you would get correct?
+        
+        your own ability (bolded) -> independent of GPT
+
+*/
+
 /******************************************************************************
     METADATA
 
@@ -270,7 +291,9 @@ function highlightOptionsButton(highlight, b) {
 }
 
 function determineActionForInstructionPage() {
-    if (CURRENT_INSTRUCTION_PAGE == 2){
+    if (CURRENT_INSTRUCTION_PAGE == 1){
+        $('#instruction-example-task-container').attr("hidden", true);
+    } else if (CURRENT_INSTRUCTION_PAGE == 2){
         $('#instruction-example-task-container').attr("hidden", false);
     } else if (CURRENT_INSTRUCTION_PAGE == 3){
         lowerOpacity();
@@ -288,6 +311,7 @@ function determineActionForInstructionPage() {
         removeAllHighlighting();
         highlightGPTExplanation(true);
     } else if (CURRENT_INSTRUCTION_PAGE == 6){
+        $('#next-button').prop("disabled", false);
         lowerOpacity();
         restoreOpacity("#instruction-task-likert-scale-container");
         removeAllHighlighting();
@@ -314,27 +338,34 @@ function determineActionForInstructionPage() {
         lowerOpacity();
         restoreOpacity("#instruction-task-submit-button-container");
         $('#next-button').prop("disabled", true);
-        $('#instruction-proceedMainexperiment').click(function(){
-            $('#next-button').prop("disabled", false);
-        });
         removeAllHighlighting();
         highlightSubmitButton(true);
+        $('#instruction-proceedMainexperiment').click(function(){
+            $('#next-button').prop("disabled", false);
+            highlightSubmitButton(false);
+            console.log("Supposed to un-highlight button");
+        });
     } else if (CURRENT_INSTRUCTION_PAGE == 10){
+        $('#next-button').prop("disabled", false);
         lowerOpacity();
         restoreOpacity("#instruction-task-options-container");
         removeAllHighlighting();
         highlightOptions(true);
     } else if (CURRENT_INSTRUCTION_PAGE == 11){
+        $('#instruction-example-task-container').attr("hidden", false);
         lowerOpacity();
         restoreOpacity("#instruction-task-options-container");
         restoreOpacity("#instruction-task-submit-button-container");
         $('#next-button').prop("disabled", true);
         $('#instruction-proceedMainexperiment').prop("disabled", true);
         $('#instruction-participant-trial-option-B').click(function(){
+            highlightOptionsButton(false, "B");
+            replaceClass('#instruction-participant-trial-option-B', "btn-dark", "btn-primary");
             highlightSubmitButton(true);
             $('#instruction-proceedMainexperiment').prop("disabled", false);
         });
         $('#instruction-proceedMainexperiment').click(function(){
+            highlightSubmitButton(false);
             $('#next-button').prop("disabled", false);
         });
         removeAllHighlighting();

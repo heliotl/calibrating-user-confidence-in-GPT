@@ -11,6 +11,10 @@ This file should contain static variables and functions for
 to conduct the experiment.
 */
 
+/*
+CHANGE TITLE TO "Working with ChatGPT"
+*/
+
 /******************************************************************************
     DEBUG
 
