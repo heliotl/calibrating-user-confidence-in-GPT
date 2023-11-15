@@ -15,6 +15,7 @@ to have their HIT approved.
 <html>
     <head>
         <link rel="stylesheet" href="css/complete.css">
+        <script src="js/complete.js" type="module"></script>
     </head>
     <body>
         <div class="col-12 trialbox" id="complete-page-content-container">
@@ -32,45 +33,13 @@ to have their HIT approved.
                 </div>
                 <div class="col-12" id="complete-message-main-text">
                     <h3>
-                        What message do we want to send to participants at the conclusion?
+                        We greatly appreciate your interest and participation in our study.
                     </h3>
                 </div>
                 <div class="col-12" id="complete-message-sub-text">
                     <h4>
-                        Anything else we might want to say. Give them stats about how they did?
+                        
                     </h4>
-                </div>
-            </div>
-            <!--------------------------------------------- 
-            |   Compensation Information                  |
-            |                                             |
-            |       Be sure to explain to participants    |
-            |       how they are going to be compensated. |
-            ---------------------------------------------->
-            <div class="row justify-content-center" id="complete-unique-code-container">
-                <div class="col-12" id="unique-code-text">
-                    <h4><b>Unique Code</b></h4>
-                </div>
-                <div class="col-12" id="how-to-get-compensated-text">
-                    <h5>
-                        To be compensated, you must copy the unique code displayed below
-                        and paste it into the MTurk page.
-                    </h5>
-                </div>
-                <div class="col-12" id="compensation-note">
-                    <h5>
-                        Your HIT will only be approved <b>once</b>
-                        (please allow 3-5 business days for approval).
-                    </h5>
-                </div>
-                <!-- Unique Code -->
-                <div class="col-12" id="unique-code-text-box">
-                    <input type="text" value="Your Unique Code" id="code" readonly>
-                </div>
-                <div class="col-12" id="unique-code-copy-button-container">
-                    <button type="button" class="btn btn-primary" id="unique-code-copy-button">
-                        Click to Copy Code
-                    </button>
                 </div>
             </div>
             <!---------------------------------------------
@@ -95,7 +64,37 @@ to have their HIT approved.
                     </button>
                 </div>
             </div>
+            <!--------------------------------------------- 
+            |   Compensation Information                  |
+            |                                             |
+            |       Be sure to explain to participants    |
+            |       how they are going to be compensated. |
+            ---------------------------------------------->
+            <div class="row justify-content-center" id="complete-unique-code-container">
+                <div class="col-12" id="unique-code-text">
+                    <h4><b>Redirect URL</b></h4>
+                </div>
+                <div class="col-12" id="how-to-get-compensated-text">
+                    <h5>
+                        To be compensated, you must click the button below to be redirected
+                        back to Prolific.
+                    </h5>
+                </div>
+                <div class="col-12" id="compensation-note">
+                    <h5>
+                        Once you are redirected, you will not be able to return to this page.
+                    </h5>
+                </div>
+                <!-- Unique Code -->
+                <div class="col-12" id="unique-code-text-box" hidden="true">
+                    <input type="text" value="Your Unique Code" id="code" readonly>
+                </div>
+                <div class="col-12" id="unique-code-copy-button-container">
+                    <button type="button" class="btn btn-primary" id="unique-code-copy-button">
+                        Redirect to Prolific
+                    </button>
+                </div>
+            </div>
         </div>
-        <script src="js/complete.js"></script>
     </body>
 </html>
