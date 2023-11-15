@@ -42,7 +42,7 @@ import {
             None! This needs to be modified by you!
 */
 var EXPERIMENT_SUMMARY = `
-    TODO
+Users of ChatGPT often report that the system is overconfident in its answers and will sometimes persuasively provide responses that are verifiably incorrect. This is in contrast to research in Artificial Intelligence which generally reports that the answers that ChatGPT provides are well-aligned, that is, if the model predicts its answer to be correct with a chance of 70% it typically is correct roughly that same percentage of the time. The goal of this research is to test methodologies designed to communicate the uncertainty of the model in its response, such that people have an accurate sense of the uncertainty in the models response and are thus not misled by outputs.
 `;
 
 /*
@@ -56,7 +56,7 @@ var EXPERIMENT_SUMMARY = `
         DEFAULT:
             30 minutes
 */
-var TIME_COMMITMENT = "30 minutes";
+var TIME_COMMITMENT = "60 minutes";
 
 /*
     Benefits and Risks
@@ -101,7 +101,7 @@ var ELIGIBILITY_REQUIREMENTS = `
         DEFAULT:
             $5.00
 */
-var COMPENSATION = "$6.00";
+var COMPENSATION = "$12.00";
 
 /*
     Recruitment Service
@@ -111,7 +111,7 @@ var COMPENSATION = "$6.00";
         DEFAULT:
             Amazon Mechanical Turk
 */
-var RECRUITMENT_SERVICE = "Amazon Mechanical Turk";
+var RECRUITMENT_SERVICE = "Prolific";
 
 /*
     Comprehention Quiz
@@ -123,7 +123,7 @@ var RECRUITMENT_SERVICE = "Amazon Mechanical Turk";
         DEFAULT:
             4/5
 */
-var COMPREHENTION_QUIZ = "4/5";
+var COMPREHENTION_QUIZ = "";
 
 /*
     Lead Researcher
