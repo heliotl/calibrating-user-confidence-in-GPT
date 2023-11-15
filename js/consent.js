@@ -210,7 +210,7 @@ $(document).ready(function (){
         $("#instructions-main-content").attr("hidden", false);
 
         // Write to Database
-        let path = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/consentData'
+        let path = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/consentData';
         writeRealtimeDatabase(path, CONSENT_DATA);
 
         // Load Instructions

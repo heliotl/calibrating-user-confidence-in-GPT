@@ -199,7 +199,7 @@ $(document).ready(function (){
         highlightGPTExplanation(false);
         highlightLikertScale(false);
         highlightLikertScaleButton(false, "25");
-        highlightLikertScaleButton(false, "50");
+        highlightLikertScaleButton(false, "100");
         highlightSubmitButton(false);
         highlightOptions(false);
         highlightOptionsButton(false, "B");
@@ -396,11 +396,11 @@ $(document).ready(function (){
             lowerOpacity();
             restoreOpacity("#instruction-task-likert-scale-container");
             $('#next-button').prop("disabled", true);
-            $('input[value="50"]').click(function(){
+            $('input[value="100"]').click(function(){
                 $('#next-button').prop("disabled", false);
             });
             removeAllHighlighting();
-            highlightLikertScaleButton(true, "50");
+            highlightLikertScaleButton(true, "100");
         } else if (CURRENT_INSTRUCTION_PAGE == 9){
             lowerOpacity();
             restoreOpacity("#instruction-task-submit-button-container");
