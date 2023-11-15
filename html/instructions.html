@@ -30,12 +30,13 @@ file appropriately!
 <html>
     <head>
         <link rel="stylesheet" href="css/instructions.css">
+        <script src="js/instructions.js" type="module"></script>
     </head>
     <body>
         <div class="col-12 mb-2 trialbox" id="instruction-main-container">
             <!-- Instruction Text -->
             <div class="row" id="instruction-text-container">
-                <div class="col-md-12 instruction-page" id="instruction-page-01">
+                <div class="col-md-12 instruction-page" id="instruction-page-01" hidden="true">
                     <h4 class="instruction-text-line-01" id="read-all-instructions-carefully">
                         <b>Please Read All Instructions Carefully</b>
                     </h4>
@@ -122,6 +123,19 @@ file appropriately!
                 </div>
                 <div class="col-12" id="instruction-page-08" hidden="true">
                     <h4 class="instruction-text-line-01">
+                        If you believe <i>ChatGPT</i>'s selection and explanation are correct, then it
+
+                    </h4>
+                    <h4 class="instruction-text-line-02">
+                        Then, <i>ChatGPT</i> is absolutely certain and will have 100% accuracy.
+                    </h4>
+                    <h5 class="instruction-text-line-03">
+                        You must click on the button labeled <i>50</i> before you can proceed.
+                    </h5>
+                </div>
+                <!-- Explaining the 50%
+                <div class="col-12" id="instruction-page-08" hidden="true">
+                    <h4 class="instruction-text-line-01">
                         Suppose <i>ChatGPT</i>'s explanation is able to eliminate <b>two</b> of the
                         multiple-choice options.
                     </h4>
@@ -133,6 +147,7 @@ file appropriately!
                         You must click on the button labeled <i>50</i> before you can proceed.
                     </h5>
                 </div>
+                -->
                 <div class="col-12" id="instruction-page-09" hidden="true">
                     <h4 class="instruction-text-line-01">
                         The fifth section is the
@@ -458,7 +473,7 @@ file appropriately!
             <!-- Pagination Buttons - Instruction Navigation -->
             <div class="row" id="instruction-navigator">
                 <div class="col-2 my-2">
-                    <button id="previous-button" name="previous" type="submit" class="btn btn-secondary" onclick="previousInstructionButton(this)" style="width: 100%">
+                    <button id="previous-button" name="previous" type="submit" class="btn btn-secondary" style="width: 100%">
                         Previous
                     </button>
                 </div>
@@ -466,7 +481,7 @@ file appropriately!
                     <!-- Dynamically generated pages -->
                 </div>
                 <div class="col-2 my-2">
-                    <button id="next-button" name="next" type="submit" class="btn btn-secondary" onclick="nextInstructionButton(this)" style="width: 100%">
+                    <button id="next-button" name="next" type="submit" class="btn btn-secondary" style="width: 100%">
                         Next
                     </button>
                 </div>
@@ -474,10 +489,9 @@ file appropriately!
             <!-- DEBUG - Skip Instructions in debug mode only -->
             <div class="row" id="debug-mode-skip-instructions">
                 <div class="col-md-12" align="center" style="margin-bottom: 10px">
-                    <input class="btn btn-primary btn-sm" type="submit" name="submit" id="submit" value="Skip Instructions" onclick="skipInstructions(this)">
+                    <input class="btn btn-primary btn-sm" type="submit" name="submit" id="skip-instructions-button" value="Skip Instructions">
                 </div>
             </div>
         </div>
-        <script src="js/instructions.js"></script>
     </body>
 </html>

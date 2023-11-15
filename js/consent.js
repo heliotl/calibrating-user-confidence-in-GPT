@@ -21,8 +21,11 @@ This file should contain static experimental metadata such as:
         Import all FirebaseJS functionality.
 ******************************************************************************/
 /// Importing functions and variables from the Firebase Psych library
-import { writeRealtimeDatabase,writeURLParameters,readRealtimeDatabase,
-    blockRandomization,finalizeBlockRandomization,firebaseUserId } from "./firebasepsych1.0.js";
+import {
+    writeRealtimeDatabase,
+    writeURLParameters,
+    firebaseUserId
+} from "./firebasepsych1.0.js";
 
 /******************************************************************************
     METADATA
@@ -209,6 +212,9 @@ $(document).ready(function (){
         // Write to Database
         let path = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/consentData'
         writeRealtimeDatabase(path, CONSENT_DATA);
+
+        // Load Instructions
+        $('#instructions-main-content').load("html/instructions.html");
     };
     /*
         Insert METADATA into page appropriately :)
