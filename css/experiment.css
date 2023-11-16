@@ -81,7 +81,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 /* Individual Choice Options */
 /* A */
 #task-options-choices-container-A {
-
+    margin-bottom: 0.25rem;
 }
 #participant-trial-option-A {
 
@@ -91,7 +91,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 }
 /* B */
 #task-options-choices-container-B {
-
+    margin-bottom: 0.25rem;
 }
 #participant-trial-option-B {
 
@@ -101,7 +101,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 }
 /* C */
 #task-options-choices-container-C {
-
+    margin-bottom: 0.25rem;
 }
 #participant-trial-option-C {
 
@@ -111,7 +111,7 @@ Everything is in order as it appears in the HTML file (top to bottom).
 }
 /* D */
 #task-options-choices-container-D {
-
+    margin-bottom: 0.25rem;
 }
 #participant-trial-option-D {
 

@@ -109,10 +109,112 @@ var DEBUG_EXPERIMENT_CONCURRENT     = DEBUG;
 //      Task Information
 var CURRENT_TASK                = 1;
 var TOTAL_TRIALS                = 40;
+var DATA_FILE                   = "data/baseline_350_Nov13_withAnsPrefix.json";
 
-// Database Path
+//      Database Path
 var TRIAL_DB_PATH               = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/trialData';
 
+//      Set Time Variables
+var TRIAL_START_TIME            = null;
+var TRIAL_CURRENT_TIME          = null;
+
+//      Task Selection
+var PROB_GPT_CORRECT            = null;
+var SUBMIT_OWN_CLASSIFICATION   = false;
+var PARTICIPANT_OWN_SELECTION       = null;
+
+//      Timers
+var PROB_GPT_CORRECT_TIMER      = null;
+var PARTICIPANT_OWN_SELECT_TIMER    = null;
+
+//      Trial Information Variables
+var LOOKUP_TABLES = [];
+var expTrialList;
+var participantTrials = [];
+
+/******************************************************************************
+    ORDERED FUNCTIONALITY
+
+        Run the following sequence of events/functions in order.
+******************************************************************************/
+//  Remove Task Header for Experiment Page
+$('#task-header').html('');
+
+//  Load JSON Data into variable
+var trialQuestions = (function () {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': DATA_FILE,
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})(); 
+
+//  Only print on DEBUG mode
+if (DEBUG_EXPERIMENT_CONCURRENT) {
+    console.log("Trial Questions");
+    console.log(trialQuestions);
+};
+
+//  Sampling Function
+async function getParticipantTrialQuestions() {
+    const studyId = EXPERIMENT_DATABASE_NAME;
+    // How many minutes before a participant will time out (i.e., when we expect them not to finish the study)?
+    // We need this (rough) estimate in order to zero out the counts for participants that started the study
+    // but did not finish within this time (and will therefore never finish)
+    const maxCompletionTimeMinutes = 90;
+
+
+    let numCategories = 10; // Total number of categories
+    let numBins = 4; // Total number of confidence bins
+    let numQuestions = 35; // Total number of questions per category
+
+    let startIndex = 0;  // Start index for lookup
+
+    // Looping over categories
+    for (let category = 0; category < numCategories; category++) {
+    
+        // Loop over confidence bins
+        for (let cbin = 0; cbin < numBins; cbin++) {
+
+
+            // Create a name for this particular combination of category and confidence bin
+            let lookupTable = 'Table_' + category + '_' + cbin;
+            // Append lookup table name to LOOKUP_TABLES var (needed for finalization)
+            LOOKUP_TABLES.push(lookupTable);
+            let numDraws = 1; // we sample one question per confidence bin per category (to create 40 questions total)
+
+            let numQuestionsperbin;
+            if (cbin==0) numQuestionsperbin = 5; // we have 5 questions per category in the first confidence bin (0.2-0.4)
+            if (cbin>0) numQuestionsperbin = 10; // we have 10 questions per category in the remaining confidence bins (0.4-0.6; 0.6-0.8; 0.8-1.0)
+
+            let assignedQuestion = await blockRandomization(studyId, lookupTable, numQuestionsperbin,
+                maxCompletionTimeMinutes, numDraws); // the await keyword is mandatory
+            
+            if (DEBUG_EXPERIMENT_CONCURRENT){
+                console.log( "For category " + category + " and confidence bin " + cbin + " we assigned question #" + assignedQuestion + " from that bin and category");
+            };
+
+            // Now, go find which question this is from the list of questions and add to the list for this participant
+            // The Topic_number and bin_wide_number are all in order
+            // We just need to keep track of how far along we are and keep adding to our start index
+            participantTrials.push(startIndex + parseInt(assignedQuestion));
+            startIndex += numQuestionsperbin;
+
+            $('#expCountdown').text(TOTAL_TRIALS - participantTrials.length);
+
+        };
+
+    };
+};
+
+//  Call Sampling function, but make suer we wait until it is finished to continue (await)
+await getParticipantTrialQuestions();
 
 /******************************************************************************
     RUN ON PAGE LOAD
@@ -121,27 +223,21 @@ var TRIAL_DB_PATH               = EXPERIMENT_DATABASE_NAME + '/participantData/'
         render the consent.html page appropriately.
 ******************************************************************************/
 $(document).ready(function (){
-    //  Remove Task Header for Experiment Page
-    $('#task-header').html('');
+    //  Hide "Loading" Screen
+    $('#mainexperiment-container-loading-page').attr("hidden", true);
+    //  Show Experiment Trial Interface
+    $('#mainexperiment-container').attr("hidden", false);
 
-    let expTrialList;
+    //  Determine the mode and questions
     if (DEBUG_EXPERIMENT_CONCURRENT){
         TOTAL_TRIALS = 2;
-        expTrialList = DEBUG_TRIAL_LIST;
-    }
+        
+    };
 
-    // Set Time Variables
-    var TRIAL_START_TIME            = null;
-    var TRIAL_CURRENT_TIME          = null;
+    //  Get trials for this experiment!
+    let shuffledParticipantTrials = participantTrials.sort((a, b) => 0.5 - Math.random());
+    expTrialList = shuffledParticipantTrials.slice(0, TOTAL_TRIALS).map(i => trialQuestions[i]);
 
-    //      Task Selection
-    var PROB_GPT_CORRECT            = null;
-    var PROB_GPT_CORRECT_TIMER      = null;
-
-    var SUBMIT_OWN_CLASSIFICATION   = false;
-
-    var PARTICIPANT_OWN_SELECTION       = null;
-    var PARTICIPANT_OWN_SELECT_TIMER    = null;
 
     /******************************************************************************
         FUNCTIONALITY
@@ -169,9 +265,6 @@ $(document).ready(function (){
             );
         }
 
-        // Update the trial counter
-        $('#task-img-counter-display').text( (trial+1) + ' ' );
-
         // Update the Question TopicList[trial]
         $('#task-question-container-topic-name').text(trialList[trial].Topic);
 
@@ -185,7 +278,7 @@ $(document).ready(function (){
         $('#participant-trial-option-text-D').text(trialList[trial].D); 
 
         // Update GPT Explanation
-        $('#task-gpt-text-box-explanation-text').html(trialList[trial].Explanation);
+        $('#task-gpt-text-box-explanation-text').html(trialList[trial].Explanation_with_prefix);
 
         // Initialize all timers
         TRIAL_START_TIME = new Date();
@@ -245,7 +338,7 @@ $(document).ready(function (){
         */
         // Set Time of Selection
         PARTICIPANT_OWN_SELECT_TIMER = new Date();
-        
+
         if (PARTICIPANT_OWN_SELECTION !== null) {
             // Revert the currently selected class back to dark button color
             replaceClass('#participant-trial-option-' + PARTICIPANT_OWN_SELECTION, "btn-primary", "btn-dark");
@@ -373,11 +466,12 @@ $(document).ready(function (){
             {
                 "trialStartTime": TRIAL_START_TIME.toString(),
                 "trialEndTime": Date().toString(),
-                "QID": expTrialList[CURRENT_TASK - 1]['question_id'],
-                "prob_gpt_correct": PROB_GPT_CORRECT,
-                "prob_gpt_correct_time": PROB_GPT_CORRECT_TIMER - TRIAL_START_TIME,
-                "pat_own_selection": PARTICIPANT_OWN_SELECTION,
-                "pat_own_selection_time": PARTICIPANT_OWN_SELECT_TIMER - TRIAL_CURRENT_TIME
+                "questionID": expTrialList[CURRENT_TASK - 1]['question_id'],
+                "questionIndex": shuffledParticipantTrials[CURRENT_TASK - 1],
+                "probGPTCorrect": PROB_GPT_CORRECT,
+                "probGPTCorrectTime": PROB_GPT_CORRECT_TIMER - TRIAL_START_TIME,
+                "patOwnSelection": PARTICIPANT_OWN_SELECTION,
+                "patOwnSelectionTime": PARTICIPANT_OWN_SELECT_TIMER - TRIAL_CURRENT_TIME
             }
         );
 
@@ -401,7 +495,7 @@ $(document).ready(function (){
         // Increment the current task number
         CURRENT_TASK++;
         // Show new task number
-        $('#trialCounter').text(CURRENT_TASK);
+        $('#trialCounter').text(CURRENT_TASK.toString().padStart(2, '0'));
 
         if (CURRENT_TASK <= TOTAL_TRIALS) {
             // Display the next trial
@@ -458,6 +552,7 @@ $(document).ready(function (){
             nextTask();
             if (CURRENT_TASK > TOTAL_TRIALS){
                 console.log("All trials done");
+                LOOKUP_TABLES.forEach((table) => finalizeBlockRandomization(EXPERIMENT_DATABASE_NAME, table));
                 allTasksDone();
             }
         } else {
@@ -467,7 +562,7 @@ $(document).ready(function (){
 
     //  Task Information
     $('#trialCounter').text(CURRENT_TASK.toString().padStart(2, '0'));
-    $('#trialCounter-total').text(TOTAL_TRIALS);
+    $('#trialCounter-total').text(TOTAL_TRIALS.toString().padStart(2, '0'));
 
     //  Present the first image
     presentTrial(expTrialList, CURRENT_TASK - 1);

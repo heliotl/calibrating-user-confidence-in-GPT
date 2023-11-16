@@ -12,6 +12,7 @@ This file contains all of the task information for the experiment.
 <html>
     <head>
         <link rel="stylesheet" href="css/experiment.css">
+        <script src="js/jquery.csv.js"></script>
         <!--
             Custom JavaScript - Experiment Page Metadata and Functionality
         -->
@@ -19,13 +20,20 @@ This file contains all of the task information for the experiment.
         </script>
     </head>
     <body>
+        <div class="col-12 trialbox justify-content-center" id="mainexperiment-container-loading-page">
+            <h3 style="text-align: center">
+                Experiment Loading...
+                <br />
+                <text id="expCountdown"></text>
+            </h3>
+        </div>
         <!--------------------------------------------------------------------------------
         ----------------------------------------------------------------------------------
         |   Trial Content - Main Container                                               |
         |       This holds all of the trial content for a given task                     |
         ----------------------------------------------------------------------------------
         --------------------------------------------------------------------------------->
-        <div class="col-12 trialbox justify-content-center" id="mainexperiment-container">
+        <div class="col-12 trialbox justify-content-center" id="mainexperiment-container" hidden="true">
             <!--------------------------------------------
             |   Row 1 - Trial Question                   |
             |       Actual trial question/information    |
