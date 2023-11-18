@@ -23,89 +23,16 @@ CHANGE TITLE TO "Working with ChatGPT"
 /// Importing functions and variables from the Firebase Psych library
 import {
     writeRealtimeDatabase,
-    writeURLParameters,
-    readRealtimeDatabase,
     blockRandomization,
     finalizeBlockRandomization,
     firebaseUserId
 } from "./firebasepsych1.0.js";
 
 /******************************************************************************
-    DEBUG
-
-        For now we are in DEBUG mode and will only present a single question.
-******************************************************************************/
-var debugQuestions = [
-    {
-        'Question': `
-        Two alternatives for interconnecting a set of processors with bidirectional links are (1) the fully interconnected network, in which each processor is directly connected to every other processor, and (2) the ring network, in which each processor is connected to two other processors. The worst-case path length for a network is the maximum, over all pairs of nodes in the network, of the minimum length paths (measured in number of links) between the nodes. For each type of interconnection of n processors, a figure of merit can be formed as the product of the number of links required for the network times the worst-case path length connecting any two processors. The ratio of this figure of merit for the fully interconnected network compared to that of the ring network, for even n > 2, is
-        `,
-        'A': "1/(n^2)",
-        'B': "1/(n(n-1))",
-        'C': "1/n",
-        'D': "(n-1)/n",
-        'True': "D",
-        'Topic': "College Computer Science",
-        'Set': "test",
-        'TrueProb': 0.192557,
-        'AnswerProb': 0.382945,
-        'IsCorrect': 0,
-        'prob_A': 0.267338,
-        'prob_B': 0.382945,
-        'prob_C': 0.15716,
-        'prob_D': 0.192557,
-        'question_id': 790,
-        'bin_wide': [0.2, 0.4],
-        'MaxProba': 0.382945,
-        'GPTResponse': 'B',
-        'Explanation': `
-        The fully interconnected network requires n(n-1)/2 links, as each processor is connected to every other processor. The worst-case path length for this network is 1, as any two processors can be directly connected.
-        The ring network requires n links, as each processor is connected to two other processors. The worst-case path length for this network is n/2, as the longest path between any two processors is through the entire ring.
-        Therefore, the figure of merit for the fully interconnected network is n(n-1)/2 * 1 = n(n-1)/2, and the figure of merit for the ring network is n * n/2 = n^2/2.
-        The ratio of these two figures of merit is (n(n-1)/2) / (n^2/2) = (n-1)/n, which is option [B].
-        `
-    },
-    {
-        'Question': `
-        Two computers communicate with each other by sending data packets across a local area network. The size of these packets is 1,000 bytes. The network has the capacity to carry 1,000 packets per second. The CPU time required to execute the network protocol to send one packet is 10 milliseconds. The maximum rate at which one computer can send data to another is approximately
-        `,
-        'A': "10,000 bytes/second",
-        'B': "25,000 bytes/ second",
-        'C': "100,000 bytes/ second",
-        'D': "500,000 bytes/ second",
-        'True': "C",
-        'Topic': "College Computer Science",
-        'Set': "test",
-        'TrueProb': 0.485624,
-        'AnswerProb': 0.485624,
-        'IsCorrect': 1,
-        'prob_A': 0.111797,
-        'prob_B': 0.299184,
-        'prob_C': 0.485624,
-        'prob_D': 0.103395,
-        'question_id': 3514,
-        'bin_wide': [0.4, 0.6],
-        'MaxProba': 0.485624,
-        'GPTResponse': 'c',
-        'Explanation': `
-        The maximum rate at which one computer can send data to another is determined by the network capacity, which is 1,000 packets per second. Each packet is 1,000 bytes, so the maximum rate is 1,000 x 1,000 = 1,000,000 bytes per second. However, the CPU time required to execute the network protocol for one packet is 10 milliseconds, which means that in one second, the CPU can only send 1/10,000 of the total number of packets. Therefore, the maximum rate at which one computer can send data to another is 1,000,000/10,000 = 100,000 bytes per second.
-        `
-    },
-];
-
-var DEBUG_TRIAL_LIST = [
-    debugQuestions[0],
-    debugQuestions[1],
-];
-
-/******************************************************************************
     METADATA
 
         All metadata variables that are relevant to the consent page.
 ******************************************************************************/
-//      Turn ON/OFF Debug Mode
-var DEBUG_EXPERIMENT_CONCURRENT     = DEBUG;
-
 //      Task Information
 var CURRENT_TASK                = 1;
 var TOTAL_TRIALS                = 40;
@@ -115,6 +42,7 @@ var DATA_FILE                   = "data/baseline_350_Nov13_withAnsPrefix.json";
 var TRIAL_DB_PATH               = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/trialData';
 
 //      Set Time Variables
+var EXPERIMENT_START_TIME       = null;
 var TRIAL_START_TIME            = null;
 var TRIAL_CURRENT_TIME          = null;
 
@@ -131,6 +59,21 @@ var PARTICIPANT_OWN_SELECT_TIMER    = null;
 var LOOKUP_TABLES = [];
 var expTrialList;
 var participantTrials = [];
+
+
+/******************************************************************************
+    DEBUG
+
+        For now we are in DEBUG mode and will only present a single question.
+******************************************************************************/
+//      Turn ON/OFF Debug Mode
+var DEBUG_EXPERIMENT_CONCURRENT     = DEBUG;
+
+//  Determine the mode and questions
+if (DEBUG_EXPERIMENT_CONCURRENT){
+    TOTAL_TRIALS = 5;
+};
+
 
 /******************************************************************************
     ORDERED FUNCTIONALITY
@@ -228,12 +171,6 @@ $(document).ready(function (){
     //  Show Experiment Trial Interface
     $('#mainexperiment-container').attr("hidden", false);
 
-    //  Determine the mode and questions
-    if (DEBUG_EXPERIMENT_CONCURRENT){
-        TOTAL_TRIALS = 2;
-        
-    };
-
     //  Get trials for this experiment!
     let shuffledParticipantTrials = participantTrials.sort((a, b) => 0.5 - Math.random());
     expTrialList = shuffledParticipantTrials.slice(0, TOTAL_TRIALS).map(i => trialQuestions[i]);
@@ -256,10 +193,11 @@ $(document).ready(function (){
                 - GPT Explanation
         */
         if (! trial){
+            EXPERIMENT_START_TIME = new Date();
             writeRealtimeDatabase(
                 TRIAL_DB_PATH + "/metadata",
                 {
-                    "experimentStartTime": Date().toString(),
+                    "experimentStartTime": EXPERIMENT_START_TIME.toString(),
                     "experimentCompleted": false,
                 }
             );
@@ -510,6 +448,20 @@ $(document).ready(function (){
             This will submit the final rankings and then load the
             "Survey" page.
         */
+        // Write to Database
+        let EXPERIMENT_FINISH_TIME = new Date();
+        writeRealtimeDatabase(
+            TRIAL_DB_PATH + "/metadata/experimentEndTime",
+            EXPERIMENT_FINISH_TIME.toString()
+        );
+        writeRealtimeDatabase(
+            TRIAL_DB_PATH + "/metadata/experimentCompleted",
+            true
+        );
+        writeRealtimeDatabase(
+            TRIAL_DB_PATH + "/metadata/experimentTotalTime",
+            EXPERIMENT_FINISH_TIME - EXPERIMENT_START_TIME
+        );
         // Hide Experiment
         $("#task-header").attr("hidden", true);
         $("#task-main-content").attr("hidden", true);

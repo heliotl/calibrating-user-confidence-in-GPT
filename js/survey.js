@@ -19,10 +19,6 @@ to conduct the post-experiment survey.
 /// Importing functions and variables from the Firebase Psych library
 import {
     writeRealtimeDatabase,
-    writeURLParameters,
-    readRealtimeDatabase,
-    blockRandomization,
-    finalizeBlockRandomization,
     firebaseUserId
 } from "./firebasepsych1.0.js";
 
@@ -51,9 +47,13 @@ var TOPIC_ABILITY_DICT = {
 var TOPICS_RANKED                   = 0;
 
 // Database Path
-var SURVEY_DB_PATH               = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/surveyData/selfAssessment';
+var SURVEY_DB_PATH               = EXPERIMENT_DATABASE_NAME + '/participantData/' + firebaseUserId + '/surveyData/';
 
-
+var SURVEY_START_TIME = new Date();
+writeRealtimeDatabase(
+    SURVEY_DB_PATH + "/metadata/surveyStartTime",
+    SURVEY_START_TIME.toString()
+);
 /******************************************************************************
     RUN ON PAGE LOAD
 
@@ -114,10 +114,20 @@ $(document).ready(function (){
             This will submit the final rankings and then load the
             "Experiment Complete" page.
         */
+        let SURVEY_END_TIME = new Date();
+
         // WRITE TO DATABASE
         writeRealtimeDatabase(
-            SURVEY_DB_PATH,
+            SURVEY_DB_PATH + "/selfAssessment",
             TOPIC_ABILITY_DICT
+        );
+        writeRealtimeDatabase(
+            SURVEY_DB_PATH + "/metadata/surveyEndTime",
+            SURVEY_END_TIME.toString()
+        );
+        writeRealtimeDatabase(
+            SURVEY_DB_PATH + "/metadata/surveyTotalTime",
+            SURVEY_END_TIME - SURVEY_START_TIME
         );
         
         // Hide Instructions

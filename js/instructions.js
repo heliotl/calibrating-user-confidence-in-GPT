@@ -88,6 +88,7 @@ var INSTRUCTIONS_DB_PATH        = EXPERIMENT_DATABASE_NAME + '/participantData/'
         render the instructions.html page appropriately.
 ******************************************************************************/
 $(document).ready(function (){
+    var INSTRUCTION_START_TIME      = new Date();
     var INSTRUCTION_PAGE_TIME       = null;
     var INSTRUCTION_READ_TIME       = null;
 
@@ -106,7 +107,7 @@ $(document).ready(function (){
         writeRealtimeDatabase(
             INSTRUCTIONS_DB_PATH + "/metadata",
             {
-                "instructionStartTime": INSTRUCTION_PAGE_TIME.toString(),
+                "instructionStartTime": INSTRUCTION_START_TIME.toString(),
                 "instructionCompleted": false,
             }
         );
@@ -120,7 +121,20 @@ $(document).ready(function (){
             while you are debugging your experiment. It will just simply
             hide the instructions sections of the experiment and move onto
             the comprehension quiz.
+
+            Params
+            ------
+            skip    :   boolean
+                - Skip Instructions or not
         */
+        let INSTRUCTION_END_TIME = new Date();
+        if (DEBUG_INSTRUCTIONS){
+            writeRealtimeDatabase(
+                INSTRUCTIONS_DB_PATH + "/metadata/instructionDebugMode",
+                true
+            );
+        };
+
         // Hide Instructions
         $("#instructions-header").attr("hidden", true);
         $("#instructions-main-content").attr("hidden", true);
@@ -130,6 +144,20 @@ $(document).ready(function (){
 
         // Load Integrity Pledge
         $('#comprehension-quiz-main-content').load('html/comprehension-quiz.html');
+
+        // Write to Database
+        writeRealtimeDatabase(
+            INSTRUCTIONS_DB_PATH + "/metadata/instructionCompleted",
+            true
+        );
+        writeRealtimeDatabase(
+            INSTRUCTIONS_DB_PATH + "/metadata/instructionEndTime",
+            INSTRUCTION_END_TIME.toString()
+        );
+        writeRealtimeDatabase(
+            INSTRUCTIONS_DB_PATH + "/metadata/instructionTotalTime",
+            INSTRUCTION_END_TIME - INSTRUCTION_START_TIME
+        );
     };
 
     function replaceClass(element, remove, add) {
@@ -572,20 +600,7 @@ $(document).ready(function (){
         //  done with the instructions completely. We can now move onto
         //  the comprehension quiz section.
         else if (CURRENT_INSTRUCTION_PAGE > TOTAL_INSTRUCTION_PAGES) {
-            // Hide Instructions
-            $("#instructions-header").attr("hidden", true);
-            $("#instructions-main-content").attr("hidden", true);
-            // Show Comprehension Quiz
-            $("#comprehension-quiz-header").attr("hidden", false);
-            $("#comprehension-quiz-main-content").attr("hidden", false);
-
-            // Load Integrity Pledge
-            $('#comprehension-quiz-main-content').load('html/comprehension-quiz.html');
-
-            writeRealtimeDatabase(
-                INSTRUCTIONS_DB_PATH + "/metadata/instructionCompleted",
-                true
-            );
+            finishInstructions();
         }
 
         // Enable the "Previous" button whenever we are past the 1st
