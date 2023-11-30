@@ -18,7 +18,7 @@ This file should contain static experimental metadata such as:
     METADATA
 */
 // DEBUG MODE
-var DEBUG = false;
+var DEBUG = true;
 
 //      Experiment Name
 //var EXPERIMENT_NAME             = "Calibrating User Confidence in GPT";
